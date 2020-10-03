@@ -6,13 +6,23 @@ using UnityEditor;
 
 public class SeasonalSystem : MonoBehaviour
 {
-    public const float SEASONAL_OFFSET = 12f;
+    private static SeasonalSystem sSingleton;
+    public static SeasonalSystem GetSingleton()
+    {
+        return sSingleton;
+    }
+
+    public const float SEASONAL_OFFSET = 30f;
     private Dictionary<Season, List<Seasonal>> mRootObjectsBySeason = new Dictionary<Season, List<Seasonal>>();
     private Dictionary<Season, List<Seasonal>> mObjectsBySeason = new Dictionary<Season, List<Seasonal>>();
     private Dictionary<Seasonal, List<Seasonal>> mObjectToSeasonalVariants = new Dictionary<Seasonal, List<Seasonal>>();
     private GameObject mCameraObj;
-
     private Dictionary<Season, float> mSeasonToSeasonCentre = new Dictionary<Season, float>();
+
+    private void Awake()
+    {
+        sSingleton = this;
+    }
 
     void Start()
     {
@@ -106,6 +116,11 @@ public class SeasonalSystem : MonoBehaviour
                 }
             }
         }
+    }
+
+    public List<Seasonal> GetSeasonalVariants(Seasonal s)
+    {
+        return mObjectToSeasonalVariants[s];
     }
 }
 
