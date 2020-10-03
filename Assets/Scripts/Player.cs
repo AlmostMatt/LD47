@@ -38,8 +38,7 @@ public class Player : MonoBehaviour
                 mOnGround = true;
                 break;
             }
-        }
-        Debug.Log("on ground; " + mOnGround);
+        }        
 
         Vector2 vel = new Vector2();
 
