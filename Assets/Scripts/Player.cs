@@ -33,13 +33,13 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 vel = new Vector2();
-        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        Collider2D collider = GetComponent<Collider2D>();
         float horiz = Input.GetAxis("Horizontal");
         bool sideBlocked = false;
         if(horiz != 0f)
         {
             vel.x = (Mathf.Sign(horiz) * mSpeed);
-            RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.size, 0, vel, GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
+            RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
             foreach(RaycastHit2D hit in sideHits)
             {   
                 if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         float vert = Input.GetAxis("Vertical");
         if(mClimbing || vert != 0f)
         {
-            Collider2D climbable = Physics2D.OverlapBox(transform.position, collider.size, 0, 1 << CLIMB_PHYS_LAYER);
+            Collider2D climbable = Physics2D.OverlapBox(transform.position, collider.bounds.size, 0, 1 << CLIMB_PHYS_LAYER);
             if(climbable != null)
             {
                 vel.y = vert == 0f ? 0f : Mathf.Sign(vert) * mClimbSpeed;
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         
         // jumping
         bool onGround = false;
-        RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
+        RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
         foreach(RaycastHit2D hit in groundHits)
         {   
             if(hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
