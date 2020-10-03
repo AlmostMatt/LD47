@@ -5,10 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D mRigidbody;
-    public float gravity = -9.8f;
     public float jumpSpeed = 5f;
     
     private bool mOnGround = true;
+    private float mJumpTimer = 0f;
     private float mSpeed = 5;
 
     // Start is called before the first frame update
@@ -18,16 +18,36 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if(mJumpTimer > 0f)
+        {
+            mJumpTimer -= Time.fixedDeltaTime;
+        }
+
+        mOnGround = false;
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.size, 0, new Vector2(0, -1), 0.015f);
+        foreach(RaycastHit2D hit in groundHits)
+        {   
+            if(hit.collider != null && hit.normal.y > 0 && hit.distance <= 0.015f && hit.collider != GetComponent<Collider2D>())
+            {
+                mOnGround = true;
+                break;
+            }
+        }
+        Debug.Log("on ground; " + mOnGround);
+
         Vector2 vel = new Vector2();
 
         float horiz = Input.GetAxis("Horizontal");
         bool jump = Input.GetButtonDown("Jump");
 
-        if(jump && mOnGround)
+        if(jump && mOnGround && mJumpTimer <= 0f)
         {
             vel.y = jumpSpeed;
+            mOnGround = false;
+            mJumpTimer = 0.2f;
         }
         else
         {
