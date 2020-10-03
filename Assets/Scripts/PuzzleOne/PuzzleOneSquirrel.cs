@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PuzzleOneSquirrel : MonoBehaviour
 {
+    public GameObject growTree;
+
     private bool mHasTargetPosition = false;
+    GameObject mTargetWaypoint;
     Vector3 mTargetPosition;
 
     private float mFleeSpeed = 8f;
@@ -16,7 +19,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
         mRigidbody = GetComponent<Rigidbody2D>();
         mSeason = GetComponent<Seasonal>().Season;
         //if(mSeason == Season.SPRING || mSeason == Season.SUMMER)
-        if(false)
+        if(mSeason != Season.FALL)
         {
             gameObject.SetActive(false);
         }
@@ -33,6 +36,8 @@ public class PuzzleOneSquirrel : MonoBehaviour
             float best = 9999;
             foreach(GameObject waypoint in waypoints)
             {
+                if(waypoint.GetComponent<Seasonal>().Season != mSeason) continue;
+
                 Vector3 waypointPos = waypoint.transform.position;
                 Vector3 waypointToPlayer = collision.gameObject.transform.position - waypointPos;
                 waypointToPlayer.z = 0;
@@ -49,6 +54,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
                     best = cost;
                     mHasTargetPosition = true;
                     mTargetPosition = waypoint.transform.position;
+                    mTargetWaypoint = waypoint;
                 }
             }
         }
@@ -58,12 +64,24 @@ public class PuzzleOneSquirrel : MonoBehaviour
     {
         if(mHasTargetPosition)
         {
-            Vector3 toTarget = mTargetPosition - transform.position;
+            Vector3 toTarget = mTargetWaypoint.transform.position - transform.position;
             if(Mathf.Abs(toTarget.x) <= 0.1f)
             {
                 mHasTargetPosition = false;
                 mRigidbody.velocity = new Vector2(0, mRigidbody.velocity.y);
-                
+
+                // move all versions of the growing tree to match the position of the waypoint
+                if(growTree != null)
+                {
+                    SeasonalSystem seasonalSystem = SeasonalSystem.GetSingleton();
+                    List<Seasonal> waypoints = seasonalSystem.GetSeasonalVariants(mTargetWaypoint.GetComponent<Seasonal>());
+                    List<Seasonal> trees = seasonalSystem.GetSeasonalVariants(growTree.GetComponent<Seasonal>());
+                    for(int i = 0; i < 4; ++i)
+                    {
+                        trees[i].gameObject.transform.position = waypoints[i].gameObject.transform.position;
+                        trees[i].BroadcastMessage("PositionChanged", waypoints[i].gameObject);
+                    }
+                }
             }
             else
             {
