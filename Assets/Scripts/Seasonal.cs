@@ -20,10 +20,15 @@ public class SeasonalGizmoDrawer
     [DrawGizmo(GizmoType.Selected | GizmoType.Active | GizmoType.NotInSelectionHierarchy)]
     static void DrawGizmoForMyScript(Seasonal scr, GizmoType gizmoType)
     {
-        Renderer rend = scr.GetComponent<Renderer>();
-        DrawRectangle(Vector3.zero, rend.bounds);
-        DrawRectangle(new Vector3(+SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
-        DrawRectangle(new Vector3(-SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
+        foreach(Renderer rend in scr.gameObject.GetComponentsInChildren<Renderer>())
+        {
+            if(rend != null)
+            {
+                DrawRectangle(Vector3.zero, rend.bounds);
+                DrawRectangle(new Vector3(+SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
+                DrawRectangle(new Vector3(-SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
+            }
+        }
     }
 
     static void DrawRectangle(Vector3 offset, Bounds bounds)

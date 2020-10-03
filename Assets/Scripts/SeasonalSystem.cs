@@ -27,8 +27,8 @@ public class SeasonalSystem : MonoBehaviour
                     seasonalObj = GameObject.Instantiate(seasonal.gameObject).GetComponent<Seasonal>();
                 }
                 seasonalObj.Season = season;
-                Vector3 pos = seasonalObj.transform.localPosition;
-                seasonalObj.transform.localPosition = new Vector3(pos.x + (SEASONAL_OFFSET*(int)season), pos.y, pos.z);
+                Vector3 pos = seasonalObj.transform.position;
+                seasonalObj.transform.position = new Vector3(pos.x + (SEASONAL_OFFSET*(int)season), pos.y, pos.z);
                 mObjectsBySeason[season].Add(seasonalObj);
             }
         }
