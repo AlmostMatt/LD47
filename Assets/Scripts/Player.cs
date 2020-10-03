@@ -39,21 +39,25 @@ public class Player : MonoBehaviour
         if(horiz != 0f)
         {
             vel.x = (Mathf.Sign(horiz) * mSpeed);
-            RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
-            foreach(RaycastHit2D hit in sideHits)
-            {   
-                if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
+            /**
+              Matt: I commented this out because top-only platformeffectors were messing with the raycast
+              something could probably also be done by changing which layers the raycast hits
+                RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
+                foreach(RaycastHit2D hit in sideHits)
                 {
-                    sideBlocked = true;
-                    break;
+                    if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
+                    {
+                        sideBlocked = true;
+                        break;
+                    }
                 }
-            }
 
-            if(sideBlocked)
-            {
-                Debug.Log("side blocked");
-                vel.x = 0;
-            }
+                if(sideBlocked)
+                {
+                    Debug.Log("side blocked");
+                    vel.x = 0;
+                }
+            **/
         }
 
         float vert = Input.GetAxis("Vertical");

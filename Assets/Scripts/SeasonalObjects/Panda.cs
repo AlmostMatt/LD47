@@ -5,7 +5,7 @@ using UnityEngine;
 public class Panda : MonoBehaviour
 {
     private int mFacing = -1;
-    private float mSpeed = 4f;
+    private float mSpeed = 1.5f;
 
     void FixedUpdate()
     {
