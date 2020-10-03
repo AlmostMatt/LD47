@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, PLATFORM_PHYS_LAYER);
         foreach(RaycastHit2D hit in groundHits)
         {   
-            if(hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != GetComponent<Collider2D>())
+            if(hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
             {
                 mOnGround = true;
                 break;
@@ -44,8 +44,28 @@ public class Player : MonoBehaviour
         Vector2 vel = new Vector2();
 
         float horiz = Input.GetAxis("Horizontal");
-        bool jump = Input.GetButtonDown("Jump");
+        bool sideBlocked = false;
+        if(horiz != 0f)
+        {
+            vel.x = (Mathf.Sign(horiz) * mSpeed);
+            RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.size, 0, vel, GROUND_CHECK_DIST, PLATFORM_PHYS_LAYER);
+            foreach(RaycastHit2D hit in sideHits)
+            {   
+                if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
+                {
+                    sideBlocked = true;
+                    break;
+                }
+            }
 
+            if(sideBlocked)
+            {
+                Debug.Log("side blocked");
+                vel.x = 0;
+            }
+        }
+
+        bool jump = Input.GetButtonDown("Jump");
         if(jump && mOnGround && mJumpTimer <= 0f)
         {
             vel.y = jumpSpeed;
@@ -55,11 +75,6 @@ public class Player : MonoBehaviour
         else
         {
             vel.y = mRigidbody.velocity.y;
-        }
-
-        if(horiz != 0f)
-        {
-            vel.x = (Mathf.Sign(horiz) * mSpeed);
         }
 
         mRigidbody.velocity = vel;
