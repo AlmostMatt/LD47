@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        bool jump = Input.GetButtonDown("Jump");
+        bool jump = Input.GetButton("Jump");
         if(jump && mOnGround && mJumpTimer <= 0f)
         {
             vel.y = jumpSpeed;
