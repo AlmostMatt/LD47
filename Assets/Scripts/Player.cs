@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     private float mJumpTimer = 0f;
     private float mSpeed = 5;
 
+    private const float GROUND_CHECK_DIST = 0.015f;
+    private const int PLATFORM_PHYS_LAYER = 1 << 8;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +30,10 @@ public class Player : MonoBehaviour
 
         mOnGround = false;
         BoxCollider2D collider = GetComponent<BoxCollider2D>();
-        RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.size, 0, new Vector2(0, -1), 0.015f);
+        RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, PLATFORM_PHYS_LAYER);
         foreach(RaycastHit2D hit in groundHits)
         {   
-            if(hit.collider != null && hit.normal.y > 0 && hit.distance <= 0.015f && hit.collider != GetComponent<Collider2D>())
+            if(hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != GetComponent<Collider2D>())
             {
                 mOnGround = true;
                 break;
