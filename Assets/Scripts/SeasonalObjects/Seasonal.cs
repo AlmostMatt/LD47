@@ -23,14 +23,14 @@ public class SeasonalGizmoDrawer
         Gizmos.color = new Color(1f,1f,1f,0.5f);
         foreach (Renderer rend in scr.gameObject.GetComponentsInChildren<Renderer>())
         {
-            DrawRectangle(Vector3.zero, rend.bounds);
+            //DrawRectangle(Vector3.zero, rend.bounds);
             DrawRectangle(new Vector3(+SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
             DrawRectangle(new Vector3(-SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
         }
         Gizmos.color = Color.green;
         foreach (Collider2D collider in scr.gameObject.GetComponentsInChildren<Collider2D>())
         {
-            DrawRectangle(Vector3.zero, collider.bounds);
+            //DrawRectangle(Vector3.zero, collider.bounds);
             DrawRectangle(new Vector3(+SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), collider.bounds);
             DrawRectangle(new Vector3(-SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), collider.bounds);
         }

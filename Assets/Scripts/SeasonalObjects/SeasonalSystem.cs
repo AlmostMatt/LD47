@@ -111,10 +111,10 @@ public class SeasonalSystemGizmoDrawer
         float y1 = -6f;
         float y2 = 20f;
         foreach (float x in new float[]{
-            -SeasonalSystem.SEASONAL_OFFSET * 1.5f,
-            -SeasonalSystem.SEASONAL_OFFSET * 0.5f,
-            +SeasonalSystem.SEASONAL_OFFSET * 0.5f,
-            +SeasonalSystem.SEASONAL_OFFSET * 1.5f,
+            SeasonalSystem.SEASONAL_OFFSET * -1f,
+            SeasonalSystem.SEASONAL_OFFSET * 0f,
+            SeasonalSystem.SEASONAL_OFFSET * 1f,
+            SeasonalSystem.SEASONAL_OFFSET * 2f,
         })
         {
             Gizmos.DrawLine(new Vector3(x, y1, 0), new Vector3(x, y2, 0));
