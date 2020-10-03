@@ -12,6 +12,8 @@ public class SeasonalSystem : MonoBehaviour
     private Dictionary<Seasonal, List<Seasonal>> mObjectToSeasonalVariants = new Dictionary<Seasonal, List<Seasonal>>();
     private GameObject mCameraObj;
 
+    private Dictionary<Season, float> mSeasonToSeasonCentre = new Dictionary<Season, float>();
+
     void Start()
     {
         mCameraObj = GameObject.FindObjectOfType<CameraMovement>().gameObject;
@@ -20,6 +22,8 @@ public class SeasonalSystem : MonoBehaviour
         Seasonal[] seasonalObjs = (Seasonal[])GameObject.FindObjectsOfType(typeof(Seasonal));
         foreach (Season season in Enum.GetValues(typeof(Season)))
         {
+            // Compute the initial center for every season
+            mSeasonToSeasonCentre[season] = (0.5f + (int)season) * SEASONAL_OFFSET;
             mRootObjectsBySeason.Add(season, new List<Seasonal>());
             mObjectsBySeason.Add(season, new List<Seasonal>());
         }
@@ -80,20 +84,24 @@ public class SeasonalSystem : MonoBehaviour
         // TODO: see if there are any issues with moving static objects
         if (mCameraObj != null)
         {
-            float totalWidth = 4 * SEASONAL_OFFSET;
-            foreach (List<Seasonal> seasonalObjList in mRootObjectsBySeason.Values)
+            foreach (Season season in Enum.GetValues(typeof(Season)))
             {
-                foreach (Seasonal seasonalObj in seasonalObjList)
+                float distCamToSeasonCentre = mCameraObj.transform.localPosition.x - mSeasonToSeasonCentre[season];
+                if (Mathf.Abs(distCamToSeasonCentre) > SEASONAL_OFFSET * 2.5)
                 {
-                    Vector3 pos = seasonalObj.transform.localPosition;
-                    float objDistX = pos.x - mCameraObj.transform.localPosition.x;
-                    if (objDistX > totalWidth / 2f)
+                    float moveBy = 4 * SEASONAL_OFFSET;
+                    // if camera is to the left, move season to the left
+                    if (distCamToSeasonCentre < 0f)
                     {
-                        seasonalObj.transform.localPosition = new Vector3(pos.x - totalWidth, pos.y, pos.z);
+                        moveBy *= -1;
                     }
-                    if (objDistX < -totalWidth / 2f)
+                    // Update the center of the season and move all objects in that season
+                    mSeasonToSeasonCentre[season] += moveBy;
+                    foreach (Seasonal seasonalObj in mRootObjectsBySeason[season])
                     {
-                        seasonalObj.transform.localPosition = new Vector3(pos.x + totalWidth, pos.y, pos.z);
+
+                        Vector3 pos = seasonalObj.transform.localPosition;
+                        seasonalObj.transform.localPosition = new Vector3(pos.x + moveBy, pos.y, pos.z);
                     }
                 }
             }
