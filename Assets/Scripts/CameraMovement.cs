@@ -9,6 +9,8 @@ public class CameraMovement : MonoBehaviour
     private const float MAX_DY = 3f;
     private const float MOV_SPEED = 4f;
 
+    private const float MIN_Y = -1.2f;
+
     void Update()
     {
         if (mPlayerObj == null)
@@ -18,7 +20,7 @@ public class CameraMovement : MonoBehaviour
         else
         {
             Vector3 playerPos = mPlayerObj.transform.localPosition;
-            Vector3 targetPos = new Vector3(playerPos.x, playerPos.y, transform.localPosition.z);
+            Vector3 targetPos = new Vector3(playerPos.x, Mathf.Max(playerPos.y, MIN_Y), transform.localPosition.z);
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * MOV_SPEED);
             // transform.localPosition = new Vector3(targetPos.x, targetPos.y, transform.localPosition.z);
         }
