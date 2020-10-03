@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8513254976311146596}
   - component: {fileID: 8513254976311146597}
   - component: {fileID: 8513254976311146599}
+  - component: {fileID: 1329569927640457492}
   m_Layer: 0
   m_Name: landscape
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8513254976311146602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 3}
+  m_LocalPosition: {x: 6, y: 4, z: 3}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,3 +93,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd6a74e1be1368448cef020c51f7f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1329569927640457492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513254976311146602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7216889c36d0a54f94c773b19236156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seasonalSprites:
+  - {fileID: 21300000, guid: 5d05df618ae618d468583543b245e88a, type: 3}
+  - {fileID: 21300000, guid: 37988d2e6e8b9a64f81fb79ec5130013, type: 3}
+  - {fileID: 21300000, guid: 721b6f05470ce0d479e6d31f085cb3c0, type: 3}
+  - {fileID: 21300000, guid: 89a8e066bc7897346b2eb94599055347, type: 3}
