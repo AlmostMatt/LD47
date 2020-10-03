@@ -20,14 +20,19 @@ public class SeasonalGizmoDrawer
     [DrawGizmo(GizmoType.Selected | GizmoType.Active | GizmoType.NotInSelectionHierarchy)]
     static void DrawGizmoForMyScript(Seasonal scr, GizmoType gizmoType)
     {
-        foreach(Renderer rend in scr.gameObject.GetComponentsInChildren<Renderer>())
+        Gizmos.color = new Color(1f,1f,1f,0.5f);
+        foreach (Renderer rend in scr.gameObject.GetComponentsInChildren<Renderer>())
         {
-            if(rend != null)
-            {
-                DrawRectangle(Vector3.zero, rend.bounds);
-                DrawRectangle(new Vector3(+SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
-                DrawRectangle(new Vector3(-SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
-            }
+            DrawRectangle(Vector3.zero, rend.bounds);
+            DrawRectangle(new Vector3(+SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
+            DrawRectangle(new Vector3(-SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), rend.bounds);
+        }
+        Gizmos.color = Color.green;
+        foreach (Collider2D collider in scr.gameObject.GetComponentsInChildren<Collider2D>())
+        {
+            DrawRectangle(Vector3.zero, collider.bounds);
+            DrawRectangle(new Vector3(+SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), collider.bounds);
+            DrawRectangle(new Vector3(-SeasonalSystem.SEASONAL_OFFSET, 0f, 0f), collider.bounds);
         }
     }
 

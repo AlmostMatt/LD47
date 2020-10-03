@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEditor;
 
 public class SeasonalSystem : MonoBehaviour
 {
@@ -96,6 +97,27 @@ public class SeasonalSystem : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+}
+
+// Draws a gizmo in the editor to visualize the seasonal copies
+public class SeasonalSystemGizmoDrawer
+{
+    [DrawGizmo(GizmoType.Selected | GizmoType.Active | GizmoType.NotInSelectionHierarchy)]
+    static void DrawGizmoForMyScript(Seasonal scr, GizmoType gizmoType)
+    {
+        Gizmos.color = Color.yellow;
+        float y1 = -6f;
+        float y2 = 20f;
+        foreach (float x in new float[]{
+            -SeasonalSystem.SEASONAL_OFFSET * 1.5f,
+            -SeasonalSystem.SEASONAL_OFFSET * 0.5f,
+            +SeasonalSystem.SEASONAL_OFFSET * 0.5f,
+            +SeasonalSystem.SEASONAL_OFFSET * 1.5f,
+        })
+        {
+            Gizmos.DrawLine(new Vector3(x, y1, 0), new Vector3(x, y2, 0));
         }
     }
 }
