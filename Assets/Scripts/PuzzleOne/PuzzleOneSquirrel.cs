@@ -33,7 +33,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
             mRigidbody.AddForce(new Vector2(2, 20));
 
             GameObject[] waypoints = GameObject.FindGameObjectsWithTag("SquirrelWaypoint");
-            float best = 9999;
+            float best = 999999;
             foreach(GameObject waypoint in waypoints)
             {
                 if(waypoint.GetComponent<Seasonal>().Season != mSeason) continue;
@@ -42,12 +42,14 @@ public class PuzzleOneSquirrel : MonoBehaviour
                 Vector3 waypointToPlayer = collision.gameObject.transform.position - waypointPos;
                 waypointToPlayer.z = 0;
                 float distToPlayer = waypointToPlayer.sqrMagnitude;
+                if(distToPlayer < 1) continue;
 
                 Vector3 waypointToSquirrel = transform.position - waypointPos;
                 waypointToSquirrel.z = 0;
                 float distToSquirrel = waypointToSquirrel.sqrMagnitude;
+                if(distToSquirrel < 1) continue;
 
-                float cost = distToSquirrel - (distToPlayer * 1000);
+                float cost = distToSquirrel + (distToSquirrel > distToPlayer ? 10000 : 0);
 
                 if(cost < best)
                 {

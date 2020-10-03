@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
                         break;
                     }
                 }
-
                 if(sideBlocked)
                 {
                     Debug.Log("side blocked");

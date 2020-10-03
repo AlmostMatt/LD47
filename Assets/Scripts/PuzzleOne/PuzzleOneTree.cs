@@ -6,7 +6,6 @@ public class PuzzleOneTree : MonoBehaviour
 {
     public Sprite sapling;
     public Sprite deadSapling;
-    public Sprite summerSapling;
 
     private GameObject mSapling;
     private GameObject mTree;
@@ -31,25 +30,28 @@ public class PuzzleOneTree : MonoBehaviour
         Season season = GetComponent<Seasonal>().Season;
         if(season == Season.SPRING)
         {
-            mSapling.SetActive(true);
             mTree.SetActive(false);
+            mSapling.SetActive(true);
+            mSapling.GetComponent<SpriteRenderer>().sprite = sapling;
         }
         else if(season == Season.SUMMER)
         {
             mTree.SetActive(good);
-            if(good)
-            {
-                mSapling.SetActive(false);
-            }
-            else
+            mSapling.SetActive(!good);
+            if(!good)
             {
                 mSapling.GetComponent<SpriteRenderer>().sprite = deadSapling;
             }
         }
+        else if(season == Season.FALL)
+        {
+            mTree.SetActive(false);
+            mSapling.SetActive(false);
+        }
         else
         {
             mSapling.SetActive(false);
-            mTree.SetActive(good);
+            mTree.SetActive(false);
         }
     }
 
