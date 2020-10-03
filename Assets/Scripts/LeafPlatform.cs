@@ -27,7 +27,7 @@ public class LeafPlatform : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " collision with " + collision.gameObject.name);
-        ParticleSystem leaves = GetComponent<ParticleSystem>();
+        ParticleSystem leaves = GetComponentInChildren<ParticleSystem>();
         if(leaves != null)
         {
             leaves.Play();
