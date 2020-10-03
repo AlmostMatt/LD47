@@ -122,6 +122,15 @@ public class SeasonalSystem : MonoBehaviour
     {
         return mObjectToSeasonalVariants[s];
     }
+
+    public float GetSeasonX1(Season season)
+    {
+        return mSeasonToSeasonCentre[season] - SEASONAL_OFFSET / 2f;
+    }
+    public float GetSeasonX2(Season season)
+    {
+        return mSeasonToSeasonCentre[season] + SEASONAL_OFFSET / 2f;
+    }
 }
 
 // Draws a gizmo in the editor to visualize the seasonal copies
