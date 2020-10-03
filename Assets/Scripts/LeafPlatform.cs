@@ -9,7 +9,7 @@ public class LeafPlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Season season = gameObject.GetComponentInParent<Seasonal>().Season;
+        Season season = gameObject.GetComponent<Seasonal>().Season;
         GetComponent<SpriteRenderer>().sprite = seasonalSprites[(int)season];
 
         if(season == Season.WINTER)

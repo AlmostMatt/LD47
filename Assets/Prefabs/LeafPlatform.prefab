@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 708642802946501376}
   - component: {fileID: 184087907}
   - component: {fileID: 184087908}
+  - component: {fileID: 5593977963557063012}
   m_Layer: 8
   m_Name: LeafPlatform
   m_TagString: Untagged
@@ -160,6 +161,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a56a6b1f4faad1e40ada78eb2fa02c80, type: 3}
   - {fileID: 21300000, guid: a4adc0f75c20b0c40bc6e4af25364f2b, type: 3}
   - {fileID: 0}
+--- !u!114 &5593977963557063012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832392681104427922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd6a74e1be1368448cef020c51f7f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7374390429682150810
 GameObject:
   m_ObjectHideFlags: 0
