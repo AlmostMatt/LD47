@@ -5,7 +5,7 @@ using System;
 
 public class SeasonalSystem : MonoBehaviour
 {
-    private const float SEASONAL_OFFSET = 12f;
+    public const float SEASONAL_OFFSET = 12f;
     private Dictionary<Season,List<Seasonal>> mObjectsBySeason = new Dictionary<Season, List<Seasonal>>();
 
     void Start()

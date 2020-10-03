@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 832392681104427924}
   - component: {fileID: 832392681104427923}
   - component: {fileID: 832392681104427925}
+  - component: {fileID: 708642802946501376}
   m_Layer: 0
   m_Name: LeafPlatform
   m_TagString: Untagged
@@ -101,3 +102,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &708642802946501376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832392681104427922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd6a74e1be1368448cef020c51f7f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
