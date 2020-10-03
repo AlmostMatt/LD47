@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeafPlatform : MonoBehaviour
 {
-    public Sprite[] seasonalSprites = new Sprite[(int)Season.NUM_SEASONS];
+    public Sprite[] seasonalSprites = new Sprite[4];
     
     // Start is called before the first frame update
     void Start()
@@ -22,5 +22,10 @@ public class LeafPlatform : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(gameObject.name + " collision with " + collision.gameObject.name);
     }
 }
