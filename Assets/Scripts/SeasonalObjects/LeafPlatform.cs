@@ -5,12 +5,15 @@ using UnityEngine;
 public class LeafPlatform : MonoBehaviour
 {
     public Sprite[] seasonalSprites = new Sprite[4];
+    private SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
         Season season = gameObject.GetComponent<Seasonal>().Season;
-        GetComponent<SpriteRenderer>().sprite = seasonalSprites[(int)season];
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = seasonalSprites[(int)season];
 
         if(season == Season.WINTER)
         {
