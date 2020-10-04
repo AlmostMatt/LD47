@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - SquirrelWaypoint
+  - Fruit
   layers:
   - Default
   - TransparentFX

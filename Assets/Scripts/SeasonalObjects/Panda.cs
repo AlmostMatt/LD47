@@ -12,8 +12,10 @@ public class Panda : MonoBehaviour
     private int mFacing = -1;
     private float mSpeed = 1.5f;
     private bool mSleeping = false;
-
     private float mBubbleTimer = 0f;
+
+    private GameObject mTargetFruit;
+    private bool mEating = false;
 
     private void Start()
     {
@@ -32,25 +34,47 @@ public class Panda : MonoBehaviour
     {
         if(!mSleeping)
         {
-            SeasonalSystem seasonSystem = SeasonalSystem.GetSingleton();
-            Season season = GetComponent<Seasonal>().Season;
-            if (transform.localPosition.x < seasonSystem.GetSeasonX1(season))
+            if(mTargetFruit == null)
             {
-                SetFacingDirection(1);
+                SeasonalSystem seasonSystem = SeasonalSystem.GetSingleton();
+                Season season = GetComponent<Seasonal>().Season;
+                if (transform.localPosition.x < seasonSystem.GetSeasonX1(season))
+                {
+                    SetFacingDirection(1);
+                }
+                if (transform.localPosition.x > seasonSystem.GetSeasonX2(season))
+                {
+                    SetFacingDirection(-1);
+                }
             }
-            if (transform.localPosition.x > seasonSystem.GetSeasonX2(season))
+            else
             {
-                SetFacingDirection(-1);
+                float distToTarget = mTargetFruit.transform.position.x - transform.position.x;
+                if(Mathf.Abs(distToTarget) <= 0.1f)
+                {
+                    // stop moving (unless we get another fruit)
+                    mEating = true;
+                    GetComponent<Animator>().SetBool("eating", mEating);
+                    Destroy(mTargetFruit);
+                    mTargetFruit = null;
+                }
+                else
+                {
+                    SetFacingDirection(distToTarget > 0 ? 1 : -1);                    
+                }
             }
-
-            // Accelerate to desired velocity
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            float desiredV = mFacing * mSpeed;
-            float deltaV = desiredV - rb.velocity.x;
-            float desiredAccel = deltaV / Time.fixedDeltaTime;
-            float maxAccel = 30f;
-            float actualAccel = Mathf.Min(Mathf.Abs(desiredAccel), maxAccel) * Mathf.Sign(desiredAccel) * 1000;
-            rb.AddForce(new Vector2(actualAccel, 0f));
+            
+            if(!mEating || mTargetFruit)
+            {
+                // Accelerate to desired velocity
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                float desiredV = mFacing * mSpeed;
+                float deltaV = desiredV - rb.velocity.x;
+                float desiredAccel = deltaV / Time.fixedDeltaTime;
+                float maxAccel = 30f;
+                float actualAccel = Mathf.Min(Mathf.Abs(desiredAccel), maxAccel) * Mathf.Sign(desiredAccel) * 1000;
+                rb.AddForce(new Vector2(actualAccel, 0f));
+            }
         }
     }
 
@@ -65,10 +89,36 @@ public class Panda : MonoBehaviour
                     mBubbleTimer -= Time.deltaTime;
                     if(mBubbleTimer < 0f)
                     {
-//                        Vector3 spawnOffset = new Vector3(bubbleSpawnOffset.x * transform.localScale.x, transform.localScale.y * bubbleSpawnOffset.y, 0f);
                         GameObject b = Instantiate(bubble, mBubbleSpawnPoint.position, Quaternion.identity);
                         b.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
                         mBubbleTimer = bubbleTime;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if(mTargetFruit == null)
+            {
+                SeasonalSystem seasonSystem = SeasonalSystem.GetSingleton();
+                Season season = GetComponent<Seasonal>().Season;
+                float seasonLeftBound = seasonSystem.GetSeasonX1(season);
+                float seasonRightBound = seasonSystem.GetSeasonX2(season);
+                
+                GameObject[] fruits = GameObject.FindGameObjectsWithTag("Fruit");
+                float best = 9999;
+                foreach(GameObject fruit in fruits)
+                {
+                    float fruitX = fruit.transform.position.x;
+                    if(fruitX < seasonLeftBound || fruitX > seasonRightBound) continue;
+
+                    float dist = fruitX - transform.position.x;
+                    if(dist < best)
+                    {
+                        best = dist;
+                        mTargetFruit = fruit;
+                        mEating = false;
+                        GetComponent<Animator>().SetBool("eating", mEating);
                     }
                 }
             }
