@@ -30,8 +30,11 @@ public class PuzzleOneResetAcornTrigger : MonoBehaviour
     {
         if(!collision.gameObject.CompareTag("Player")) return;
 
-        if(mFallSquirrel.transform.childCount > 2)
-            Destroy(mFallSquirrel.transform.GetChild(2).gameObject);
+        Transform acorn = mFallSquirrel.transform.GetChild(2).GetChild(0);
+        if(acorn != null)
+        {
+            Destroy(acorn.gameObject);
+        }
 
         mFallSquirrel.transform.position = mFallSquirrelStartPoint.transform.position;
         mFallSquirrel.transform.localScale = mFallSquirrelStartPoint.transform.localScale;
