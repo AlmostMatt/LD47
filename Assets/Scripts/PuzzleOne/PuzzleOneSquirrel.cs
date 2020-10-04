@@ -110,6 +110,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
                         }
                     }
 
+                    mFleeing = false;
                     mTargetObject = null;
                 }
             }
