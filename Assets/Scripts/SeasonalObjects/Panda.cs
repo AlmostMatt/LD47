@@ -111,6 +111,7 @@ public class Panda : MonoBehaviour
                 {
                     float fruitX = fruit.transform.position.x;
                     if(fruitX < seasonLeftBound || fruitX > seasonRightBound) continue;
+                    if(fruit.transform.position.y > transform.position.y) continue;
 
                     float dist = fruitX - transform.position.x;
                     if(dist < best)
