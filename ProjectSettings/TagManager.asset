@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SquirrelWaypoint
   - Fruit
+  - Acorn
   layers:
   - Default
   - TransparentFX

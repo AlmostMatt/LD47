@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 266963802086638562}
   - component: {fileID: 266963802086638564}
   - component: {fileID: 266963802086638563}
+  - component: {fileID: 4332038965051475849}
   m_Layer: 0
   m_Name: FruitSpawner
   m_TagString: Untagged
@@ -61,3 +62,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!114 &4332038965051475849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266963802086638561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd6a74e1be1368448cef020c51f7f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
