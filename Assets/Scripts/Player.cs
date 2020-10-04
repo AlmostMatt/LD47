@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private float mClimbSpeed = 3;
     private bool mClimbing = false;
     private float mOldGravityScale;
+    private float mJumpedFromClimbTimer = 0f;
 
     private const float GROUND_CHECK_DIST = 0.015f;
     private const int PLATFORM_PHYS_LAYER = 8;
@@ -60,16 +61,27 @@ public class Player : MonoBehaviour
             **/
         }
 
-        float vert = Input.GetAxis("Vertical");
-        if(mClimbing || vert != 0f)
+        float vert = Input.GetAxis("Vertical");        
         {
             Collider2D climbable = Physics2D.OverlapBox(transform.position, collider.bounds.size, 0, 1 << CLIMB_PHYS_LAYER);
             if(climbable != null)
             {
-                vel.y = vert == 0f ? 0f : Mathf.Sign(vert) * mClimbSpeed;
-                mClimbing = true;
-                gameObject.layer = PHYS_LAYER_CLIMBING;
-                mRigidbody.gravityScale = 0;
+                Vector3 zAlignedPos = new Vector3(transform.position.x, transform.position.y, climbable.bounds.center.z);
+                if(!mClimbing)
+                {
+                    bool initiateClimbing = (mJumpedFromClimbTimer <= 0f) && (climbable.bounds.Contains(zAlignedPos));
+                    if(initiateClimbing)
+                    {
+                        mClimbing = true;
+                        gameObject.layer = PHYS_LAYER_CLIMBING;
+                        mRigidbody.gravityScale = 0;
+                    }
+                }
+                
+                if(mClimbing)
+                {
+                    vel.y = vert == 0f ? 0f : Mathf.Sign(vert) * mClimbSpeed;
+                }
             }
             else
             {
@@ -111,15 +123,19 @@ public class Player : MonoBehaviour
         }
 
         bool jump = Input.GetButton("Jump");
-        if(jump && (onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
+        if(jump && ((mClimbing && horiz != 0f)|| onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
         {
             mJumping = true;
             vel.y = jumpSpeed;
             mOnGround = false;
             mJumpTimer = 0.2f;
 
-            mClimbing = false;
-            mRigidbody.gravityScale = mOldGravityScale;
+            if(mClimbing)
+            {
+                mJumpedFromClimbTimer = 0.1f;
+                mClimbing = false;
+                mRigidbody.gravityScale = mOldGravityScale;
+            }
         }
         else if(!mClimbing)
         {
@@ -129,5 +145,11 @@ public class Player : MonoBehaviour
         mOnGround = onGround;
         mRigidbody.velocity = vel;
         if (mJumping) { mJumping = (mRigidbody.velocity.y > 0f); } // Stay in "jumping" state until velocity is <= 0f
+    }
+
+    private void Update()
+    {
+        if(mJumpedFromClimbTimer > 0f)
+            mJumpedFromClimbTimer -= Time.deltaTime;
     }
 }
