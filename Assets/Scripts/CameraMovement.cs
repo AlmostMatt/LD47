@@ -13,6 +13,15 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+    }
+
+    void FixedUpdate()
+    {
+        MoveCamera();
+    }
+
+    void MoveCamera()
+    {
         if (mPlayerObj == null)
         {
             mPlayerObj = GameObject.FindObjectOfType<Player>().gameObject;
