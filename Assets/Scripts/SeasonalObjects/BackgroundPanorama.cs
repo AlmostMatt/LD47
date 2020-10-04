@@ -28,10 +28,8 @@ public class BackgroundPanorama : MonoBehaviour
         float S = SeasonalSystem.SEASONAL_OFFSET;
         float P = mCameraObj.transform.localPosition.x - SeasonalSystem.GetSingleton().GetSeasonX1(season);
         float B = mBackgroundWidth;
-        Debug.Log("S " + S + ", P " + P + ", B " + B);
         float offset1 = -B * P / S;
         float offset = (B/2f) -B * P / S;
-        Debug.Log("offset1 " + offset1);
         Vector3 pos = transform.localPosition;
         // copy the y of the camera
         transform.localPosition = new Vector3(mCameraObj.transform.localPosition.x + offset, mCameraObj.transform.localPosition.y, pos.z);
