@@ -21,7 +21,7 @@ public class FruitSpawner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
     }
 
     public void SpawnFruit()
@@ -42,6 +42,7 @@ public class FruitSpawner : MonoBehaviour
         if(mSpawnedFruit != null)
         {
             mSpawnedFruit.GetComponent<Fruit>().DropFromTree();
+            mSpawnedFruit = null;
         }
     }
 }

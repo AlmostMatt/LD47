@@ -14,6 +14,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
     private float mScaleX;
 
     private bool mGoingForAcorn = false;
+    private bool mFleeing = false;
 
     void Start()
     {
@@ -30,12 +31,29 @@ public class PuzzleOneSquirrel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(mGoingForAcorn) return;
+
         if(collision.gameObject.CompareTag("Player"))
         {
-            mRigidbody.AddForce(new Vector2(2, 20));
-            mGoingForAcorn = false;
-            SelectWaypoint(collision.gameObject);
+            FleeFrom(collision.gameObject);
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(mFleeing || mGoingForAcorn) return;
+
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            FleeFrom(collision.gameObject);
+        }
+    }
+
+    private void FleeFrom(GameObject go)
+    {
+        mFleeing = true;
+        mRigidbody.AddForce(new Vector2(2, 20));
+        SelectWaypoint(go);
     }
 
     private void Update()
@@ -125,7 +143,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
             if(distToPlayer < 1) continue;
 
             float distToSquirrel = Mathf.Abs(transform.position.x - waypointPos.x);
-            if(distToSquirrel < 1) continue;
+            if(distToSquirrel < 0.2f) continue;
 
             float cost = distToSquirrel + (distToSquirrel > distToPlayer ? 10000 : 0);
 

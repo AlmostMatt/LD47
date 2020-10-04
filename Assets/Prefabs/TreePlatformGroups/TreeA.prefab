@@ -572,16 +572,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeafPlatform (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -637,13 +627,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 708642802946501376, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
 --- !u!4 &3742702567295393395 stripped
 Transform:
@@ -662,16 +646,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeafPlatform (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -733,8 +707,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 708642802946501376, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
 --- !u!4 &3742702566821129477 stripped
 Transform:
@@ -754,25 +727,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeafPlatform (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.81
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -819,8 +782,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 708642802946501376, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
 --- !u!4 &3742702566749353945 stripped
 Transform:
@@ -925,16 +887,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AcornPlatform
       objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -943,7 +895,7 @@ PrefabInstance:
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -995,8 +947,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 708642802946501376, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
 --- !u!4 &3742702568016091754 stripped
 Transform:
@@ -1015,16 +966,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LeafPlatform (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -1081,13 +1022,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 708642802946501376, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
 --- !u!4 &3742702567610267927 stripped
 Transform:
@@ -1115,7 +1050,7 @@ PrefabInstance:
     - target: {fileID: 266963802086638562, guid: 7b90a252805fb5147a6107130be3f1b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: -0.154
       objectReference: {fileID: 0}
     - target: {fileID: 266963802086638562, guid: 7b90a252805fb5147a6107130be3f1b3,
         type: 3}
@@ -1175,12 +1110,17 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 266963802086638563, guid: 7b90a252805fb5147a6107130be3f1b3,
         type: 3}
-      propertyPath: m_Radius
-      value: 0.7
+      propertyPath: m_Offset.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 266963802086638563, guid: 7b90a252805fb5147a6107130be3f1b3,
         type: 3}
-      propertyPath: m_Offset.x
+      propertyPath: m_Offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 266963802086638563, guid: 7b90a252805fb5147a6107130be3f1b3,
+        type: 3}
+      propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1197,25 +1137,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeafPlatform (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.01
+      value: 3.94
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.56
+      value: -0.58
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -1262,8 +1192,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 708642802946501376, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
 --- !u!4 &3742702567496837014 stripped
 Transform:
