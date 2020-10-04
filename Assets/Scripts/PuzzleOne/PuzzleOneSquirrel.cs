@@ -13,6 +13,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
     private float mFleeSpeed = 8f;
     private Rigidbody2D mRigidbody;
     private Season mSeason;
+    private float mScaleX;
 
     void Start()
     {
@@ -23,6 +24,8 @@ public class PuzzleOneSquirrel : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        mScaleX = Mathf.Abs(transform.localScale.x);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -88,7 +91,8 @@ public class PuzzleOneSquirrel : MonoBehaviour
             else
             {
                 float towardsSign = Mathf.Sign(toTarget.x);
-                GetComponentInChildren<SpriteRenderer>().flipX = towardsSign < 0;
+                //GetComponentInChildren<SpriteRenderer>().flipX = towardsSign < 0;
+                transform.localScale = new Vector3(mScaleX * towardsSign, transform.localScale.y, transform.localScale.z);
                 mRigidbody.velocity = new Vector2(towardsSign * mFleeSpeed, mRigidbody.velocity.y);
             }
         }
