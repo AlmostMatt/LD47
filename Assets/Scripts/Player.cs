@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float jumpSpeed = 5f;
     
     private bool mOnGround = true;
+    private bool mJumping = true;
     private float mJumpTimer = 0f;
     private float mJumpGraceTimeTimer = 0f;
     private float mSpeed = 5;
@@ -80,13 +81,16 @@ public class Player : MonoBehaviour
         
         // jumping
         bool onGround = false;
-        RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
-        foreach(RaycastHit2D hit in groundHits)
-        {   
-            if(hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
+        if (!mJumping) // Don't even bother with an on-ground check if the player is moving up a because they jumped
+        {
+            RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
+            foreach (RaycastHit2D hit in groundHits)
             {
-                onGround = true;
-                break;
+                if (hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
+                {
+                    onGround = true;
+                    break;
+                }
             }
         }
 
@@ -109,6 +113,7 @@ public class Player : MonoBehaviour
         bool jump = Input.GetButton("Jump");
         if(jump && (onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
         {
+            mJumping = true;
             vel.y = jumpSpeed;
             mOnGround = false;
             mJumpTimer = 0.2f;
@@ -122,7 +127,7 @@ public class Player : MonoBehaviour
         }
 
         mOnGround = onGround;
-
         mRigidbody.velocity = vel;
+        if (mJumping) { mJumping = (mRigidbody.velocity.y > 0f); } // Stay in "jumping" state until velocity is <= 0f
     }
 }
