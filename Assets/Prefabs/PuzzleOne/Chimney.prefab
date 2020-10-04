@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8009566922827804295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -0.03, z: 0}
+  m_LocalPosition: {x: 0.12, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5908522193388562905}
@@ -273,7 +273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8009566923203508357}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.88, z: 0}
+  m_LocalPosition: {x: 0, y: 6.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8009566922827804294}
@@ -303,7 +303,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 10}
+  m_Size: {x: 1, y: 12}
   m_EdgeRadius: 0
 --- !u!114 &8009566923203508359
 MonoBehaviour:
@@ -385,6 +385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmokeEmitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
         type: 3}
