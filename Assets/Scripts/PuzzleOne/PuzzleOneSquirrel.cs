@@ -87,7 +87,6 @@ public class PuzzleOneSquirrel : MonoBehaviour
                             List<Seasonal> trees = seasonalSystem.GetSeasonalVariants(growTree.GetComponent<Seasonal>());
                             for(int i = 0; i < 4; ++i)
                             {
-                                trees[i].gameObject.transform.position = waypoints[i].gameObject.transform.position;
                                 trees[i].BroadcastMessage("PositionChanged", waypoints[i].gameObject);
                             }
                         }
