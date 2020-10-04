@@ -19,10 +19,6 @@ public class SeasonalCameraEffect : MonoBehaviour
         float intensityRelativeToX2 = (Mathf.Clamp(seasonX2 - camPos, xOffsetForMinIntensity, xOffsetForMaxIntensity) - xOffsetForMinIntensity) / xOffsetDiff;
         float intensity = Mathf.Min(intensityRelativeToX1, intensityRelativeToX2);
 
-        //GetComponent<ParticleSystem>().main..startColor = new Color(1f, 1f, 1f, 0.45f * intensity);
-        //var main = GetComponent<ParticleSystem>().main;
-        //main.startColor = new Color(1f, 1f, 1f, 0.45f * intensity);
-
         var colOverTime = GetComponent<ParticleSystem>().colorOverLifetime;
         Gradient grad = new Gradient();
         grad.SetKeys(new GradientColorKey[] {
