@@ -5,11 +5,11 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private GameObject mPlayerObj;
-    private const float MAX_DX = 3f;
-    private const float MAX_DY = 3f;
     private const float MOV_SPEED = 4f;
+    private const float SMOOTH_TIME = 0.3f;
 
     private const float MIN_Y = -1.2f;
+    private Vector3 mCamVelocity = Vector3.zero;
 
     void Update()
     {
@@ -21,8 +21,9 @@ public class CameraMovement : MonoBehaviour
         {
             Vector3 playerPos = mPlayerObj.transform.localPosition;
             Vector3 targetPos = new Vector3(playerPos.x, Mathf.Max(playerPos.y, MIN_Y), transform.localPosition.z);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * MOV_SPEED);
-            // transform.localPosition = new Vector3(targetPos.x, targetPos.y, transform.localPosition.z);
+
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref mCamVelocity, SMOOTH_TIME);
+            // transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * MOV_SPEED);
         }
     }
 }
