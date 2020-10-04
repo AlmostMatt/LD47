@@ -6,7 +6,7 @@ public class Music : MonoBehaviour
 {
     public GameObject mainCamera;
 
-    private AudioSource source;
+    private AudioSource[] sources;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class Music : MonoBehaviour
                 child.gameObject.SetActive(s == season);
                 if(s == season)
                 {
-                    source = child.GetComponent<AudioSource>();
+                    sources = child.GetComponentsInChildren<AudioSource>();
                 }
             }
         }
@@ -31,7 +31,10 @@ public class Music : MonoBehaviour
         if(mainCamera != null)
         {
             float dist = Mathf.Abs(mainCamera.transform.position.x - transform.position.x);
-            source.volume = Mathf.Clamp((20 - dist)/20, 0, 1);
+            foreach(AudioSource source in sources)
+            {
+                source.volume = Mathf.Clamp((20 - dist)/20, 0, 1);
+            }
         }
     }
 }
