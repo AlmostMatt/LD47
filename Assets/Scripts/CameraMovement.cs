@@ -22,7 +22,9 @@ public class CameraMovement : MonoBehaviour
             Vector3 playerPos = mPlayerObj.transform.localPosition;
             Vector3 targetPos = new Vector3(playerPos.x, Mathf.Max(playerPos.y, MIN_Y), transform.localPosition.z);
 
-            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref mCamVelocity, SMOOTH_TIME);
+            transform.localPosition = targetPos;
+            // TODO: use smooth damp and fix the jitter
+            //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref mCamVelocity, SMOOTH_TIME);
             // transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * MOV_SPEED);
         }
     }
