@@ -6,7 +6,8 @@ public class PuzzleOneSquirrel : MonoBehaviour
 {
     public GameObject growTree;
 
-    GameObject mTargetObject;
+    private Transform mAcornHolder;
+    private GameObject mTargetObject;
 
     private float mFleeSpeed = 8f;
     private Rigidbody2D mRigidbody;
@@ -18,6 +19,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
 
     void Start()
     {
+        mAcornHolder = transform.GetChild(2);
         mRigidbody = GetComponent<Rigidbody2D>();
         mSeason = GetComponent<Seasonal>().Season;
         //if(mSeason == Season.SPRING || mSeason == Season.SUMMER)
@@ -60,7 +62,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
     {        
         if(!mGoingForAcorn)
         {
-            bool hasAcorn = transform.childCount > 2;
+            bool hasAcorn = mAcornHolder.childCount > 0;
             if(!hasAcorn)
             {
                 GameObject acorn = GameObject.FindGameObjectWithTag("Acorn");
@@ -87,7 +89,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
 
                 if(mTargetObject.CompareTag("Acorn"))
                 {
-                    mTargetObject.transform.SetParent(transform);
+                    mTargetObject.transform.SetParent(mAcornHolder, true); // worldPositionStays means that grabbing the acorn wont change the scale of it
                     mTargetObject.transform.localPosition = new Vector3(0, 0, 0);
                     SelectWaypoint(null);
                     Debug.Log("picked up acorn");
@@ -95,7 +97,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
                 }
                 else
                 {
-                    if(transform.childCount > 2) // hasAcorn
+                    if(mAcornHolder.childCount > 0) // hasAcorn
                     {
                         // move all versions of the growing tree to match the position of the waypoint
                         if(growTree != null)
