@@ -5,13 +5,20 @@ using UnityEngine;
 public class Panda : MonoBehaviour
 {
     public Sprite sleepingSprite;
+    public GameObject bubble;
+    public float bubbleTime = 2f;
 
+    private Transform mBubbleSpawnPoint;
     private int mFacing = -1;
     private float mSpeed = 1.5f;
     private bool mSleeping = false;
 
+    private float mBubbleTimer = 0f;
+
     private void Start()
     {
+        mBubbleSpawnPoint = transform.Find("BubbleSpawnPoint");
+
         Season season = GetComponent<Seasonal>().Season;
         if(season == Season.WINTER)
         {
@@ -44,6 +51,27 @@ public class Panda : MonoBehaviour
             float maxAccel = 30f;
             float actualAccel = Mathf.Min(Mathf.Abs(desiredAccel), maxAccel) * Mathf.Sign(desiredAccel) * 1000;
             rb.AddForce(new Vector2(actualAccel, 0f));
+        }
+    }
+
+    private void Update()
+    {
+        if(mSleeping)
+        {
+            if(bubble != null)
+            {
+                if(mBubbleTimer >= 0f)
+                {
+                    mBubbleTimer -= Time.deltaTime;
+                    if(mBubbleTimer < 0f)
+                    {
+//                        Vector3 spawnOffset = new Vector3(bubbleSpawnOffset.x * transform.localScale.x, transform.localScale.y * bubbleSpawnOffset.y, 0f);
+                        GameObject b = Instantiate(bubble, mBubbleSpawnPoint.position, Quaternion.identity);
+                        b.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
+                        mBubbleTimer = bubbleTime;
+                    }
+                }
+            }
         }
     }
 
