@@ -88,7 +88,7 @@ public class PuzzleOneSquirrel : MonoBehaviour
             else
             {
                 float towardsSign = Mathf.Sign(toTarget.x);
-                GetComponent<SpriteRenderer>().flipX = towardsSign < 0;
+                GetComponentInChildren<SpriteRenderer>().flipX = towardsSign < 0;
                 mRigidbody.velocity = new Vector2(towardsSign * mFleeSpeed, mRigidbody.velocity.y);
             }
         }
