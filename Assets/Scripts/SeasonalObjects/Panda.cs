@@ -42,7 +42,7 @@ public class Panda : MonoBehaviour
             float deltaV = desiredV - rb.velocity.x;
             float desiredAccel = deltaV / Time.fixedDeltaTime;
             float maxAccel = 30f;
-            float actualAccel = Mathf.Min(Mathf.Abs(desiredAccel), maxAccel) * Mathf.Sign(desiredAccel);
+            float actualAccel = Mathf.Min(Mathf.Abs(desiredAccel), maxAccel) * Mathf.Sign(desiredAccel) * 1000;
             rb.AddForce(new Vector2(actualAccel, 0f));
         }
     }
