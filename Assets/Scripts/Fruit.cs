@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
+    public float collisionDelay = 1f;
     private float mCollisionDelay = 0f;
     // Start is called before the first frame update
     void Start()
@@ -28,12 +29,14 @@ public class Fruit : MonoBehaviour
     {
         transform.SetParent(null);
         GetComponent<Rigidbody2D>().simulated = true;
-        mCollisionDelay = 1f;
+        mCollisionDelay = collisionDelay;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(mCollisionDelay <= 0f)
-        GetComponent<Rigidbody2D>().simulated = false;
+        {
+            GetComponent<Rigidbody2D>().simulated = false;
+        }
     }
 }

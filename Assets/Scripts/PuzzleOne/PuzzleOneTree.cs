@@ -10,6 +10,10 @@ public class PuzzleOneTree : MonoBehaviour
     private GameObject mSapling;
     private GameObject mTree;
 
+    private float mAlpha = 0f;
+    private float mTargetAlpha = 0f;
+    private float mFadeSpeed = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +26,24 @@ public class PuzzleOneTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(mAlpha != mTargetAlpha)
+        {
+            mAlpha += Time.deltaTime * Mathf.Sign(mTargetAlpha - mAlpha) * mFadeSpeed;
+            mAlpha = Mathf.Clamp(mAlpha, 0, 1);
+            
+            SpriteRenderer[] sprs = GetComponentsInChildren<SpriteRenderer>();
+            foreach(SpriteRenderer sr in sprs)
+            {
+                Color c = sr.color;
+                c.a = mAlpha;
+                sr.color = c;
+            }
+        }
+
+        if(mAlpha == 0f)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void UpdatePuzzleState(bool good)

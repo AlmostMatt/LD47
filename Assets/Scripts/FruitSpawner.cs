@@ -10,25 +10,34 @@ public class FruitSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GetComponent<Seasonal>().Season != Season.FALL)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         SpawnFruit();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if(mSpawnedFruit == null)
-        {
-            // TODO: only spawn fruit once, at the beginning of entering a season
-//            SpawnFruit();
-        }
+    {        
     }
 
-    void SpawnFruit()
+    public void SpawnFruit()
     {
         mSpawnedFruit = Instantiate(fruit, transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            DropFruit();
+        }
+    }
+
+    public void DropFruit()
     {
         if(mSpawnedFruit != null)
         {
