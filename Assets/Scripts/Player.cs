@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
     private const int PLATFORM_PHYS_LAYER = 8;
     private const int CLIMB_PHYS_LAYER = 9;
     private const int PHYS_LAYER_CLIMBING = 10;
+    // 11 = AnimalNoCollide
+    // 12 = FallingFruit
+    private const int RAIN_BLOCKING_PLATFORM_PHYS_LAYER = 13;
+    // 14 = Rain particles
+    //
     private const int PHYS_LAYER_DEFAULT = 0;
     private const float JUMP_GRACE_TIME = 0.15f;
 
@@ -44,6 +49,8 @@ public class Player : MonoBehaviour
             /**
               Matt: I commented this out because top-only platformeffectors were messing with the raycast
               something could probably also be done by changing which layers the raycast hits
+
+            Note: this should also use RAIN_BLOCKING_PLATFORM_PHYS_LAYER
                 RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
                 foreach(RaycastHit2D hit in sideHits)
                 {
@@ -95,7 +102,9 @@ public class Player : MonoBehaviour
         bool onGround = false;
         if (!mJumping) // Don't even bother with an on-ground check if the player is moving up a because they jumped
         {
-            RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
+            // Note, this could also be done with LayerMask.GetMask("UserLayerA", "UserLayerB")) using the names of layers
+            int groundLayerMask = (1 << RAIN_BLOCKING_PLATFORM_PHYS_LAYER) | (1 << PLATFORM_PHYS_LAYER);
+            RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, groundLayerMask);
             foreach (RaycastHit2D hit in groundHits)
             {
                 if (hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
