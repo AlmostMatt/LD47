@@ -20,7 +20,7 @@ public class Fruit : MonoBehaviour
             mCollisionDelay -= Time.deltaTime;
             if(mCollisionDelay <= 0f)
             {
-                gameObject.layer = 0;
+                // gameObject.layer = 0;
             }
         }
     }

@@ -6,6 +6,9 @@ public class Bubble : MonoBehaviour
 {
     public float expandTime = 1f;
 
+    public float mPopTimer = -1f;
+
+    private const int PHYS_LAYER_BUBBLE_POP = 16;
     private float mExpandTimer;
     Rigidbody2D mRigidbody;
     // Start is called before the first frame update
@@ -28,6 +31,29 @@ public class Bubble : MonoBehaviour
         if(mRigidbody.velocity.y < 0f)
         {
             Destroy(gameObject);
+        }
+
+        if(mPopTimer > 0f)
+        {
+            mPopTimer -= Time.deltaTime;
+            if(mPopTimer <= 0f)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            mPopTimer = 1f;
+            return;
+        }
+            
+        if(collision.gameObject.layer == PHYS_LAYER_BUBBLE_POP)
+        {
+            mPopTimer = 0.01f;
         }
     }
 }

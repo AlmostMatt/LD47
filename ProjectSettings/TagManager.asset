@@ -24,8 +24,8 @@ TagManager:
   - RainBlockingPlatforms
   - Rain
   - BlockingEnvironment
-  - 
-  - 
+  - BubblePopping
+  - PlatformFruitPassthrough
   - 
   - 
   - 

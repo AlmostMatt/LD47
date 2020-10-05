@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 935785201}
-  m_Layer: 8
+  m_Layer: 17
   m_Name: BubbleSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8333296063252386798}
   - component: {fileID: 3926717128203466142}
   - component: {fileID: 9091190063203410396}
-  m_Layer: 8
+  m_Layer: 17
   m_Name: Panda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
