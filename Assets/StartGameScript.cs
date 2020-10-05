@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartGameScript : MonoBehaviour
 {
     AsyncOperation mAsync;
+    private float mCountdown = 4f; // Auto start after this amount of time
 
     private void Start()
     {
@@ -20,7 +21,11 @@ public class StartGameScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (mCountdown > 0f)
+        {
+            mCountdown -= Time.deltaTime;
+        }
+        if (Input.anyKeyDown || mCountdown < 0f)
         {
             ActivateScene();
         }
