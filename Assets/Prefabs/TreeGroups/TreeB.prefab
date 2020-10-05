@@ -32,7 +32,7 @@ Transform:
   - {fileID: 8652692274347541867}
   - {fileID: 8652692276113063719}
   m_Father: {fileID: 1788770251792064684}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1788770251630008412
 SpriteRenderer:
@@ -123,6 +123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7290821735736773015}
+  - {fileID: 1788770252011355671}
   - {fileID: 1396042951234554186}
   - {fileID: 1396042950052224785}
   - {fileID: 1396042949941213723}
@@ -158,7 +159,7 @@ GameObject:
   - component: {fileID: 1788770252011355671}
   - component: {fileID: 1788770252011355670}
   m_Layer: 8
-  m_Name: New Sprite
+  m_Name: branch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,12 +172,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788770252011355668}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.28, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.32, y: 4.949999, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1396042951234554186}
-  m_RootOrder: 2
+  m_Father: {fileID: 1788770251792064684}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1788770252011355670
 SpriteRenderer:
@@ -276,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -426,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -501,7 +502,7 @@ PrefabInstance:
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -576,7 +577,7 @@ PrefabInstance:
     - target: {fileID: 4686881405054365394, guid: f71aa095c3778474fb7839e4d4a154c5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4686881405054365394, guid: f71aa095c3778474fb7839e4d4a154c5,
         type: 3}
@@ -666,7 +667,7 @@ PrefabInstance:
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
@@ -741,7 +742,7 @@ PrefabInstance:
     - target: {fileID: 6973389539300139541, guid: 9022cf40feab27245b4d218055d4c964,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6973389539300139541, guid: 9022cf40feab27245b4d218055d4c964,
         type: 3}
@@ -991,7 +992,7 @@ PrefabInstance:
     - target: {fileID: 4686881405054365394, guid: f71aa095c3778474fb7839e4d4a154c5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4686881405054365394, guid: f71aa095c3778474fb7839e4d4a154c5,
         type: 3}
@@ -1066,7 +1067,7 @@ PrefabInstance:
     - target: {fileID: 6066326104057536986, guid: ff3aa089da3c81040a888d6811249f17,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6066326104057536986, guid: ff3aa089da3c81040a888d6811249f17,
         type: 3}
