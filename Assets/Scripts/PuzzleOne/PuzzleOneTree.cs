@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PuzzleOneTree : MonoBehaviour
 {
+    public Sprite buriedAcorn;
     public Sprite sapling;
     public Sprite deadSapling;
 
@@ -98,10 +99,16 @@ public class PuzzleOneTree : MonoBehaviour
                 mSapling.GetComponentInChildren<SpriteRenderer>().sprite = deadSapling;
             }
         }
+        else if(season == Season.WINTER)
+        {
+            ActivateTree(false);
+            ActivateSapling(true);
+            mSapling.GetComponentInChildren<SpriteRenderer>().sprite = buriedAcorn;
+        }
         else
         {
             ActivateTree(false);
-            ActivateSapling(false);            
+            ActivateSapling(false);
         }
     }
 
