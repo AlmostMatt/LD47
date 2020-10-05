@@ -17,6 +17,14 @@ public class WhaleBusStop : MonoBehaviour
 
     private float mCameraInitialSize;
 
+    private void Start()
+    {
+        if(GetComponentInParent<Seasonal>().Season != Season.FALL)
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         if(mSummoningWhale <= 0) return;
@@ -46,6 +54,11 @@ public class WhaleBusStop : MonoBehaviour
             case 3:
                 {
                     Instantiate(whale, whaleSpawnPoint.transform.position, whaleSpawnPoint.transform.rotation);
+                    ParticleSystem[] pss = whaleSpawnPoint.GetComponentsInChildren<ParticleSystem>();
+                    foreach(ParticleSystem ps in pss)
+                    {
+                        ps.Play();
+                    }
                     break;
                 }
         }
@@ -61,7 +74,8 @@ public class WhaleBusStop : MonoBehaviour
         if(mSummoningWhale > 0) return;
 
         if(collision.CompareTag("Player"))
-        {     
+        {
+            collision.gameObject.GetComponent<Player>().PreventMovement(true);
             mCameraInitialSize = playerCam.GetComponent<Camera>().orthographicSize;
             mSummoningWhale = 1;
             mStageTime = cameraZoomOutTime;

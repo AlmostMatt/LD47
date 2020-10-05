@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private const float JUMP_GRACE_TIME = 0.15f;
     private const float GROUND_CHECK_DIST = 0.015f;
 
+    private bool mPreventMovement = false;
+
     // fields related to in-cloud effect
     private int mNumCloudsTouching = 0;
 
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour
         // Most of the following is collision checks and user input
         Vector2 vel = new Vector2();
         Collider2D collider = GetComponent<Collider2D>();
-        float horiz = Input.GetAxis("Horizontal");
+        float horiz = mPreventMovement ? 0f : Input.GetAxis("Horizontal");
         bool sideBlocked = false;
         if(horiz != 0f && !mStayClimbing)
         {
@@ -74,7 +76,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        float vert = Input.GetAxis("Vertical");        
+        float vert = mPreventMovement ? 0f : Input.GetAxis("Vertical");        
         {
             Collider2D climbable = Physics2D.OverlapBox(transform.position, collider.bounds.size, 0, 1 << PHYS_LAYER_CLIMBABLE);
             if(climbable != null)
@@ -137,7 +139,8 @@ public class Player : MonoBehaviour
             mJumpGraceTimeTimer = JUMP_GRACE_TIME;
         }
 
-        bool jump = Input.GetButton("Jump") || Input.GetAxis("Vertical") > 0f;
+        bool jumpInput = mPreventMovement ? false : Input.GetButton("Jump");
+        bool jump = jumpInput || vert > 0f;
         if(jump && ((mNumCloudsTouching > 0) || (mClimbing && horiz != 0f) || onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
         {
             mJumping = true;
@@ -186,7 +189,7 @@ public class Player : MonoBehaviour
         
         // allow the player to keep holding a direction as they approach a climbable.
         // only register an attempt to leave the climbable if the player releases and then re-presses
-        if(mStayClimbing && (Input.GetAxis("Horizontal") == 0f || !mClimbing))
+        if(mStayClimbing && ((mPreventMovement ? 0f : Input.GetAxis("Horizontal")) == 0f || !mClimbing))
         {
             mStayClimbing = false;
         }
@@ -233,5 +236,10 @@ public class Player : MonoBehaviour
     public void ExitCloud()
     {
         mNumCloudsTouching--;
+    }
+
+    public void PreventMovement(bool prevent)
+    {
+        mPreventMovement = prevent;
     }
 }

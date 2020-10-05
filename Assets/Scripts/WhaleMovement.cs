@@ -14,7 +14,7 @@ public class WhaleMovement : MonoBehaviour
     private Vector3 mStartPos;
 
     private const float BREACH_WAV_LEN = 12f;
-    private const float BREACH_WAV_HEIGHT = 15f;
+    private const float BREACH_WAV_HEIGHT = 12f;
 
     private float mAscendOverTime = 0f;
     private float mStageTime = 0f;
@@ -46,7 +46,7 @@ public class WhaleMovement : MonoBehaviour
             // Slope is dy dx
             // And y = WAV_HEIGHT * Mathf.Sin(mCurrentX / WAV_LEN);
             // so dy dx = WAV_HEIGHT * Mathf.Cos(mCurrentX / WAV_LEN) * 1f/WAV_LEN
-            float dydx = WAV_HEIGHT * Mathf.Cos(mCurrentX / WAV_LEN) * 1f / BREACH_WAV_LEN;
+            float dydx = BREACH_WAV_HEIGHT * Mathf.Cos(mCurrentX / BREACH_WAV_LEN) * 1f / BREACH_WAV_LEN;
             angle = Mathf.Atan2(dydx, 1) * Mathf.Rad2Deg;
 
             if(mStageTime >= 1.7f)
