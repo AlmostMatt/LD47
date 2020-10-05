@@ -11,13 +11,18 @@ public class FadeIn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetColor();
     }
 
     // Update is called once per frame
     void Update()
     {
         mFadeTimer -= Time.deltaTime;
+        SetColor();
+    }
+
+    void SetColor()
+    {
         float alpha = Mathf.Clamp(mFadeTimer / FADE_TIME, 0f, 1f);
         GetComponent<Image>().color = new Color(0f, 0f, 0f, alpha);
     }
