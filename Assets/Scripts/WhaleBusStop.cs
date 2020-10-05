@@ -21,7 +21,7 @@ public class WhaleBusStop : MonoBehaviour
     {
         if(GetComponentInParent<Seasonal>().Season != Season.FALL)
         {
-            transform.parent.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
