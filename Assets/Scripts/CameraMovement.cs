@@ -46,5 +46,11 @@ public class CameraMovement : MonoBehaviour
     public void StopFollowingPlayer()
     {
         mFollowPlayer = false;
+        // This happens at the end of the game. Shortly after this we want to fade to black.
+        FadeIn fadeIn = GameObject.FindObjectOfType<FadeIn>();
+        if (fadeIn != null)
+        {
+            fadeIn.StartFadeOut();
+        }
     }
 }
