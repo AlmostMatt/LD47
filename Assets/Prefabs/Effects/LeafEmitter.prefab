@@ -4838,8 +4838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticleColorGradientBySeason:
   - serializedVersion: 2
-    key0: {r: 0.24158953, g: 0.5754717, b: 0.33341718, a: 1}
-    key1: {r: 0.5671916, g: 0.764151, b: 0.21266466, a: 1}
+    key0: {r: 0.34901962, g: 0.5137255, b: 0.40392157, a: 1}
+    key1: {r: 0.58431375, g: 0.83137256, b: 0.67058825, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
