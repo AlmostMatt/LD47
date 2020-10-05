@@ -55,7 +55,10 @@ public class Bubble : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            mPopTimer = 1f;
+            if(mPopTimer < 0f)
+            {
+                mPopTimer = 1f;
+            }
             return;
         }
             
