@@ -19,6 +19,12 @@ public class LeafPlatform : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        // 50% to reflect horizontally
+        if (Random.Range(0f, 1f) > 0.5f)
+        {
+            Vector3 scale = transform.localScale;
+            transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+        }
     }
 
     // Update is called once per frame
