@@ -8,7 +8,7 @@ public class WhaleMovement : MonoBehaviour
     private float mCurrentX = 0f;
     private float mLastStageX = 0f;
     private float mLastStageY = 0f;
-    private const float VEL_X = 5f;
+    private const float VEL_X = 8f;
     private const float WAV_LEN = 6f;
     private const float WAV_HEIGHT = 3f;
     private Vector3 mStartPos;
@@ -26,7 +26,7 @@ public class WhaleMovement : MonoBehaviour
         mStartPos = transform.position;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Move in FixedUpdate because that's what other objects do (thanks to physics)
         Move(Time.fixedDeltaTime);
@@ -87,6 +87,5 @@ public class WhaleMovement : MonoBehaviour
 
         transform.localPosition = new Vector3(posX, posY, transform.localPosition.z);
         transform.localEulerAngles = new Vector3(0f, 0f, angle);
-
     }
 }
