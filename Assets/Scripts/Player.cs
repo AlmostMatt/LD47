@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
     private const int RAIN_BLOCKING_PLATFORM_PHYS_LAYER = 13;
     // 14 = Rain particles
     private const int PHYS_LAYER_BLOCKING_ENV = 15;
-    private const int GROUND_LAYER_MASK = 1 << PHYS_LAYER_PLATFORM | 1 << RAIN_BLOCKING_PLATFORM_PHYS_LAYER;
+    private const int PHYS_LAYER_PLATFORM_FRUIT_PASS = 17;
+    private const int GROUND_LAYER_MASK = 1 << PHYS_LAYER_PLATFORM | 1 << RAIN_BLOCKING_PLATFORM_PHYS_LAYER | 1 << PHYS_LAYER_PLATFORM_FRUIT_PASS;
 
     // Start is called before the first frame update
     void Start()

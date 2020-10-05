@@ -28,7 +28,7 @@ public class Panda : MonoBehaviour
             GetComponent<Animator>().SetBool("sleeping", true);
             mSleeping = true;
         }
-        else if(season == Season.FALL)
+        else
         {
             mEating = true;
             GetComponent<Animator>().SetBool("eating", mEating);
@@ -71,7 +71,7 @@ public class Panda : MonoBehaviour
                     float relativeX = transform.position.x - seasonalSystem.GetSeasonX1(season);
                     for(int i = 0; i < 4; ++i)
                     {
-                        if(i == (int)season) continue;
+                        if(i == (int)season || i == (int)Season.SPRING) continue;
 
                         Season s = (Season)i;
                         float seasonX = seasonalSystem.GetSeasonX1(s);
