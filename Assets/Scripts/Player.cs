@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
                     {
                         mClimbing = true;
                         mStayClimbing = true;
+                        mJumping = false;
                         gameObject.layer = PHYS_LAYER_CLIMBING;
                         mRigidbody.gravityScale = 0;
                     }
@@ -133,7 +134,7 @@ public class Player : MonoBehaviour
         }
 
         bool jump = Input.GetButton("Jump") || Input.GetAxis("Vertical") > 0f;
-        if(jump && ((mClimbing && horiz != 0f)|| onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
+        if(jump && ((mClimbing && horiz != 0f) || onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
         {
             mJumping = true;
             vel.y = jumpSpeed;
