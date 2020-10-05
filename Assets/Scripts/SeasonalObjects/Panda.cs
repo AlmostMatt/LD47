@@ -71,7 +71,8 @@ public class Panda : MonoBehaviour
                     float relativeX = transform.position.x - seasonalSystem.GetSeasonX1(season);
                     for(int i = 0; i < 4; ++i)
                     {
-                        if(i == (int)season || i == (int)Season.SPRING) continue;
+                        if(i != (int)Season.WINTER) continue; // I know the loop is unnecessary now, but it's here because of design churn, and maybe it'll be needed again...
+                        //if(i == (int)season || i == (int)Season.SPRING || i == ) continue;
 
                         Season s = (Season)i;
                         float seasonX = seasonalSystem.GetSeasonX1(s);
