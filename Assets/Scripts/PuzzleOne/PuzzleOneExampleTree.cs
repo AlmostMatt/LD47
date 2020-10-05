@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PuzzleOneExampleTree : MonoBehaviour
 {
+    private GameObject mWinterPlant;
     private GameObject mSapling;
     private GameObject mTree;
     private GameObject mFirewood;
@@ -11,17 +12,12 @@ public class PuzzleOneExampleTree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mWinterPlant = transform.Find("WinterPlant").gameObject;
         mSapling = transform.Find("Sapling").gameObject;
         mTree = transform.Find("GrownTree").gameObject;
         mFirewood = transform.Find("Firewood").gameObject;
 
         UpdatePuzzleState();        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void UpdatePuzzleState()
@@ -30,5 +26,6 @@ public class PuzzleOneExampleTree : MonoBehaviour
         mSapling.SetActive(season == Season.SPRING);
         mTree.SetActive(season == Season.SUMMER);
         mFirewood.SetActive(season == Season.FALL);
+        mWinterPlant.SetActive(season == Season.WINTER);
     }
 }

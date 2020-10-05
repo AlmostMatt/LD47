@@ -25,6 +25,8 @@ public class Music : MonoBehaviour
         }
     }
 
+    private float maxRange = 20f;
+    private float fadeRange = 13f;
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +35,14 @@ public class Music : MonoBehaviour
             float dist = Mathf.Abs(mainCamera.transform.position.x - transform.position.x);
             foreach(AudioSource source in sources)
             {
-                source.volume = Mathf.Clamp((20 - dist)/20, 0, 1);
+                if(dist <= fadeRange)
+                {
+                    source.volume = 1f;
+                }
+                else
+                {
+                    source.volume = Mathf.Clamp((maxRange - dist)/(maxRange-fadeRange), 0, 1);
+                }
             }
         }
     }

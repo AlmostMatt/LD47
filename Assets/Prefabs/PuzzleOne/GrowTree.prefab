@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26305d20c92db74a9e7bdb1530f5e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buriedAcorn: {fileID: 21300000, guid: edb2de982a2efc443bdf8507eef74d7f, type: 3}
   sapling: {fileID: 21300000, guid: 006b55c8d81ca75408bf7a8e1eabfe77, type: 3}
   deadSapling: {fileID: 21300000, guid: 688fea6c9d2abe14dbafdf1ab4d98e19, type: 3}
 --- !u!1 &2046657015854164838
