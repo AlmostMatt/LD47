@@ -5,6 +5,7 @@ using UnityEngine;
 public class KillParticleSystem : MonoBehaviour
 {
     ParticleSystem mSystem;
+    bool mWasAlive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +16,10 @@ public class KillParticleSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!mSystem.IsAlive())
+        if(!mSystem.IsAlive() && mWasAlive)
         {
             Destroy(gameObject);
         }
+        mWasAlive = mSystem.IsAlive();
     }
 }
