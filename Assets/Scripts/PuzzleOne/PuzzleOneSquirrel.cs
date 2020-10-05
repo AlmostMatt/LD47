@@ -54,7 +54,9 @@ public class PuzzleOneSquirrel : MonoBehaviour
     private void FleeFrom(GameObject go)
     {
         mFleeing = true;
-        mRigidbody.AddForce(new Vector2(2, 20));
+        // The squirrel has 6x regular gravity and weight of 0.2
+        // This seems to jump ~2 tiles vertically, 
+        mRigidbody.AddForce(new Vector2(0, 1.5f/Time.fixedDeltaTime));
         SelectWaypoint(go);
     }
 
