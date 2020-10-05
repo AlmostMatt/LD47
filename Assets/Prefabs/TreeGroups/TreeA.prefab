@@ -1468,6 +1468,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeafPlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 832392681104427922, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 832392681104427924, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1532,6 +1537,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697497099743465196, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374390429682150810, guid: 77c7c6f7b43a95e40a7b9472d6bd990b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77c7c6f7b43a95e40a7b9472d6bd990b, type: 3}
