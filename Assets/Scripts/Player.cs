@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
             mJumpGraceTimeTimer = JUMP_GRACE_TIME;
         }
 
-        bool jump = Input.GetButton("Jump");
+        bool jump = Input.GetButton("Jump") || Input.GetAxis("Vertical") > 0f;
         if(jump && ((mClimbing && horiz != 0f)|| onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
         {
             mJumping = true;
