@@ -28,7 +28,8 @@ public class CameraMovement : MonoBehaviour
         }
         else
         {
-            Vector3 playerPos = mPlayerObj.transform.localPosition;
+            //Vector3 playerPos = mPlayerObj.transform.localPosition;
+            Vector3 playerPos = mPlayerObj.transform.position;
             Vector3 targetPos = new Vector3(playerPos.x, Mathf.Max(playerPos.y, MIN_Y), transform.localPosition.z);
 
             transform.localPosition = targetPos;
