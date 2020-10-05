@@ -49,6 +49,10 @@ public class WhaleBusStop : MonoBehaviour
                 }
             case 2:
                 {
+                    if(stageDone)
+                    {
+                        mStageTime = 0f;
+                    }
                     break;
                 }
             case 3:
@@ -66,6 +70,7 @@ public class WhaleBusStop : MonoBehaviour
         if(stageDone)
         {
             ++mSummoningWhale;
+            mStageTimer = 0;
         }
     }
 
