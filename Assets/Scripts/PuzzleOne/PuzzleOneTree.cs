@@ -12,8 +12,8 @@ public class PuzzleOneTree : MonoBehaviour
 
     private float mSaplingAlpha = 1f;
     private float mSaplingTargetAlpha = 1f;
-    private float mTreeAlpha = 1f;
-    private float mTreeTargetAlpha = 1f;
+    private float mTreeAlpha = 0.0001f;
+    private float mTreeTargetAlpha = 0f;
     private float mFadeSpeed = 2f;
 
     // Start is called before the first frame update

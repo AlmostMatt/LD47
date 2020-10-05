@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LeafPlatform : MonoBehaviour
 {
+    public bool canReflect = true;
     public Sprite[] seasonalSprites = new Sprite[4];
     private SpriteRenderer spriteRenderer;
     
@@ -20,7 +21,7 @@ public class LeafPlatform : MonoBehaviour
             gameObject.SetActive(false);
         }
         // 50% to reflect horizontally
-        if (Random.Range(0f, 1f) > 0.5f)
+        if (canReflect && Random.Range(0f, 1f) > 0.5f)
         {
             Vector3 scale = transform.localScale;
             transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
