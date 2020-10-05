@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
     private const int PHYS_LAYER_DEFAULT = 0;
     private const float JUMP_GRACE_TIME = 0.15f;
 
+    private const int PHYS_LAYER_BLOCKING_ENV = 15;
+    private const int PHYS_LAYER_PLATFORM = 8;
+    private const int PHYS_LAYER_RAIN_PLATFORM = 13;
+    private const int PLATFORM_MASK = 1 << PHYS_LAYER_PLATFORM | 1 << PHYS_LAYER_RAIN_PLATFORM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,25 +45,22 @@ public class Player : MonoBehaviour
         bool sideBlocked = false;
         if(horiz != 0f)
         {
-            vel.x = (Mathf.Sign(horiz) * mSpeed);
-            /**
-              Matt: I commented this out because top-only platformeffectors were messing with the raycast
-              something could probably also be done by changing which layers the raycast hits
-                RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
-                foreach(RaycastHit2D hit in sideHits)
+            float direction = Mathf.Sign(horiz);
+            vel.x = (direction * mSpeed);
+            RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position + new Vector3(direction * 0.95f * collider.bounds.extents.x, 0, 0), collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PHYS_LAYER_BLOCKING_ENV);
+            foreach(RaycastHit2D hit in sideHits)
+            {
+                if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
                 {
-                    if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
-                    {
-                        sideBlocked = true;
-                        break;
-                    }
+                    sideBlocked = true;
+                    break;
                 }
-                if(sideBlocked)
-                {
-                    Debug.Log("side blocked");
-                    vel.x = 0;
-                }
-            **/
+            }
+            if(sideBlocked)
+            {
+                Debug.Log("side blocked");
+                vel.x = 0;
+            }
         }
 
         float vert = Input.GetAxis("Vertical");        
@@ -95,7 +97,7 @@ public class Player : MonoBehaviour
         bool onGround = false;
         if (!mJumping) // Don't even bother with an on-ground check if the player is moving up a because they jumped
         {
-            RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
+            RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, PLATFORM_MASK);
             foreach (RaycastHit2D hit in groundHits)
             {
                 if (hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
