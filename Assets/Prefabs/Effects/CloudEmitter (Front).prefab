@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8645630460912130720}
   - component: {fileID: 8645630460912130727}
   - component: {fileID: 8645630460912130726}
-  - component: {fileID: 408308363}
+  - component: {fileID: 7075246536614296851}
   m_Layer: 0
-  m_Name: CloudEmitter
+  m_Name: CloudEmitter (Front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -668,7 +668,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 90, z: 0}
-    m_Scale: {x: 4, y: 10, z: 1}
+    m_Scale: {x: 4, y: 20, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4753,7 +4753,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &408308363
+--- !u!114 &7075246536614296851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4762,6 +4762,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8645630460912130725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd6a74e1be1368448cef020c51f7f59, type: 3}
+  m_Script: {fileID: 11500000, guid: 885e96d0f5897844788ec47a77f2170a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

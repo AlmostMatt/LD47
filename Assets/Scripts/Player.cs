@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Most of the following is collision checks and user input
         Vector2 vel = new Vector2();
         Collider2D collider = GetComponent<Collider2D>();
         float horiz = Input.GetAxis("Horizontal");
@@ -157,6 +158,23 @@ public class Player : MonoBehaviour
         }
 
         mOnGround = onGround;
+
+        // Modified gravity and fall-speed while in clouds.
+        // I want to slow down when I first "collide" with the clouds, but gravity will still make me slowly fall over time. 
+        // (Don't mess with gravity while climbing)
+        if (mRigidbody.gravityScale != 0f)
+        {
+            mRigidbody.gravityScale = (mNumCloudsTouching > 0 ? 0.2f : 1f) * mOldGravityScale;
+            if (mNumCloudsTouching > 0)
+            {
+                float maxCloudFallSpeed = 4f;
+                if (vel.y < -maxCloudFallSpeed)
+                {
+                    vel.y = -maxCloudFallSpeed;
+                }
+            }
+        }
+
         mRigidbody.velocity = vel;
         if (mJumping) { mJumping = (mRigidbody.velocity.y > 0f); } // Stay in "jumping" state until velocity is <= 0f
     }
