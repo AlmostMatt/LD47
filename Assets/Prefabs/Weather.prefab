@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7276805822845657189}
+  - {fileID: 6567779298990793946}
   m_Father: {fileID: 383477742796198005}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -195,12 +196,12 @@ PrefabInstance:
     - target: {fileID: 4055654320658891405, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
       propertyPath: m_Name
-      value: RainEmitter (1)
+      value: RainEmitter (Lower)
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+      propertyPath: m_LocalPosition.x
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
@@ -209,8 +210,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.3
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: VelocityModule.x.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 8192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0566ab262bec41f49920e0f3dd25d808, type: 3}
@@ -234,8 +290,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 2
+      propertyPath: m_LocalPosition.x
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
@@ -244,13 +300,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.3
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: VelocityModule.x.minScalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
@@ -265,6 +371,56 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 421438963}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2077786049
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 383477742740400798}
+    m_Modifications:
+    - target: {fileID: 6567779300682685210, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: m_Name
+      value: SnowEmitter (Lower)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567779300682685211, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567779300682685211, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567779300682685211, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567779300682685211, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567779300682685211, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567779300682685209, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5cba95ccde334f74eabb61d5d79d5991, type: 3}
+--- !u!4 &6567779298990793946 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6567779300682685211, guid: 5cba95ccde334f74eabb61d5d79d5991,
+    type: 3}
+  m_PrefabInstance: {fileID: 2077786049}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1680603316148937524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,7 +431,7 @@ PrefabInstance:
     - target: {fileID: 4055654320658891405, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
       propertyPath: m_Name
-      value: RainEmitter
+      value: RainEmitter (Upper)
       objectReference: {fileID: 0}
     - target: {fileID: 4055654320658891404, guid: 0566ab262bec41f49920e0f3dd25d808,
         type: 3}
@@ -332,6 +488,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: VelocityModule.x.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055654320658891406, guid: 0566ab262bec41f49920e0f3dd25d808,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0566ab262bec41f49920e0f3dd25d808, type: 3}
 --- !u!4 &3394069053042614712 stripped
@@ -347,6 +518,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1640651499380678016}
     m_Modifications:
+    - target: {fileID: 862241879353870233, guid: 1443d953f57a7974bbd5372814797578,
+        type: 3}
+      propertyPath: m_Name
+      value: FallRandomLeafEmitter
+      objectReference: {fileID: 0}
     - target: {fileID: 862241879353870232, guid: 1443d953f57a7974bbd5372814797578,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -401,11 +577,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 862241879353870233, guid: 1443d953f57a7974bbd5372814797578,
-        type: 3}
-      propertyPath: m_Name
-      value: FallRandomLeafEmitter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1443d953f57a7974bbd5372814797578, type: 3}
@@ -425,7 +596,7 @@ PrefabInstance:
     - target: {fileID: 6567779300682685210, guid: 5cba95ccde334f74eabb61d5d79d5991,
         type: 3}
       propertyPath: m_Name
-      value: SnowEmitter
+      value: SnowEmitter (Upper)
       objectReference: {fileID: 0}
     - target: {fileID: 6567779300682685211, guid: 5cba95ccde334f74eabb61d5d79d5991,
         type: 3}
@@ -481,6 +652,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567779300682685209, guid: 5cba95ccde334f74eabb61d5d79d5991,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 8192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cba95ccde334f74eabb61d5d79d5991, type: 3}
