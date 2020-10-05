@@ -43,6 +43,12 @@ public class Bubble : MonoBehaviour
                 return;
             }
         }
+
+        if(transform.position.y > 60)
+        {
+            Pop();
+            return;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
