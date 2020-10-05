@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     private bool mPreventMovement = false;
 
+    private bool mHoldingBalloon = false;
+
     // fields related to in-cloud effect
     private int mNumCloudsTouching = 0;
 
@@ -209,13 +211,11 @@ public class Player : MonoBehaviour
         // TODO: if climbing, jumping, falling, etc can have multiple true, set the one that is most relevant to animation
         anim.SetBool("Climbing", mClimbing);
         anim.SetBool("Jumping", mJumping);
-        anim.SetBool("Falling", !mOnGround && !mJumping && !mClimbing);
+        anim.SetBool("Falling", !mOnGround && !mJumping && !mClimbing && !mHoldingBalloon);
 
         // This is relevant to whether climbing animation should play or be paused.
         bool movingVertically = Mathf.Abs(mRigidbody.velocity.y) > 0.1f;
         anim.SetFloat("ClimbSpeed", movingVertically ? 1f : 0f);
-
-        anim.SetBool("HoldingBalloon", false);
     }
 
     private void SetFacingDirection(int facingDirection)
@@ -241,5 +241,12 @@ public class Player : MonoBehaviour
     public void PreventMovement(bool prevent)
     {
         mPreventMovement = prevent;
+    }
+
+    public void HoldBalloon()
+    {
+        Animator anim = GetComponentInChildren<Animator>();
+        anim.SetBool("HoldingBalloon", true);
+        mHoldingBalloon = true;
     }
 }
