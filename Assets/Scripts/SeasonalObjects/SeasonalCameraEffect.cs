@@ -17,7 +17,9 @@ public class SeasonalCameraEffect : MonoBehaviour
         float seasonX2 = SeasonalSystem.GetSingleton().GetSeasonX2(mSeason);
         float intensityRelativeToX1 = (Mathf.Clamp(camPos - seasonX1, xOffsetForMinIntensity, xOffsetForMaxIntensity) - xOffsetForMinIntensity) / xOffsetDiff;
         float intensityRelativeToX2 = (Mathf.Clamp(seasonX2 - camPos, xOffsetForMinIntensity, xOffsetForMaxIntensity) - xOffsetForMinIntensity) / xOffsetDiff;
-        float intensity = Mathf.Min(intensityRelativeToX1, intensityRelativeToX2);
+        float summerIntensity = Mathf.Min(intensityRelativeToX1, intensityRelativeToX2);
+        float aboveCloudsIntensity = Mathf.Clamp(0.25f * (transform.position.y - CloudLayer.CLOUD_HEIGHT), 0f, 1f);
+        float intensity = Mathf.Max(summerIntensity, aboveCloudsIntensity);
 
         var colOverTime = GetComponent<ParticleSystem>().colorOverLifetime;
         Gradient grad = new Gradient();

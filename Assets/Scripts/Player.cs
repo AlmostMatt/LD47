@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     private const float JUMP_GRACE_TIME = 0.15f;
     private const float GROUND_CHECK_DIST = 0.015f;
 
+    // fields related to in-cloud effect
+    private int mNumCloudsTouching = 0;
+
     // phys layers
     // Note, this could also be done with LayerMask.GetMask("UserLayerA", "UserLayerB")) using the names of layers
     private const int PHYS_LAYER_DEFAULT = 0;
@@ -134,7 +137,7 @@ public class Player : MonoBehaviour
         }
 
         bool jump = Input.GetButton("Jump") || Input.GetAxis("Vertical") > 0f;
-        if(jump && ((mClimbing && horiz != 0f) || onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
+        if(jump && ((mNumCloudsTouching > 0) || (mClimbing && horiz != 0f) || onGround || mJumpGraceTimeTimer > 0f) && mJumpTimer <= 0f)
         {
             mJumping = true;
             vel.y = jumpSpeed;
@@ -191,5 +194,19 @@ public class Player : MonoBehaviour
     {
         mFacing = facingDirection;
         transform.localScale = new Vector3(mFacing * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
+    public void EnterCloud()
+    {
+        mNumCloudsTouching++;
+    }
+
+    public void StayInCloud()
+    {
+
+    }
+    public void ExitCloud()
+    {
+        mNumCloudsTouching--;
     }
 }

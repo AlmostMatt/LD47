@@ -28,7 +28,7 @@ public class WhaleMovement : MonoBehaviour
         float posX = mStartPos.x + mCurrentX;
         float posY = mStartPos.y + WAV_HEIGHT * Mathf.Sin(mCurrentX / WAV_LEN);
         // Also, screen wrap if too far from the camera
-        float fourSeasons = 4 * SeasonalSystem.SEASONAL_OFFSET;
+        float fourSeasons = 4f * SeasonalSystem.SEASONAL_OFFSET;
         float dx = posX - mCameraObj.transform.position.x;
         while (dx > 2.5f * SeasonalSystem.SEASONAL_OFFSET)
         {
