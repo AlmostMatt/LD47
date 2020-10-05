@@ -128,6 +128,8 @@ public class Panda : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.CompareTag("Player")) return;
+        
         float normalX = collision.contacts[0].normal.x;
         if (Mathf.Abs(normalX) > 0.2f)
         {
