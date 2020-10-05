@@ -15,7 +15,7 @@ public class LeafPlatform : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         spriteRenderer.sprite = seasonalSprites[(int)season];
 
-        if(season == Season.WINTER)
+        if(season == Season.WINTER || seasonalSprites[(int)season] == null)
         {
             gameObject.SetActive(false);
         }
