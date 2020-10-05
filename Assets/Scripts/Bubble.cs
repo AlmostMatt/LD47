@@ -5,9 +5,9 @@ using UnityEngine;
 public class Bubble : MonoBehaviour
 {
     public float expandTime = 1f;
+    public GameObject popEffect;
 
-    public float mPopTimer = -1f;
-
+    private float mPopTimer = -1f;
     private const int PHYS_LAYER_BUBBLE_POP = 16;
     private float mExpandTimer;
     Rigidbody2D mRigidbody;
@@ -30,7 +30,8 @@ public class Bubble : MonoBehaviour
 
         if(mRigidbody.velocity.y < 0f)
         {
-            Destroy(gameObject);
+            Pop();
+            return;
         }
 
         if(mPopTimer > 0f)
@@ -38,7 +39,8 @@ public class Bubble : MonoBehaviour
             mPopTimer -= Time.deltaTime;
             if(mPopTimer <= 0f)
             {
-                Destroy(gameObject);
+                Pop();
+                return;
             }
         }
     }
@@ -55,5 +57,14 @@ public class Bubble : MonoBehaviour
         {
             mPopTimer = 0.01f;
         }
+    }
+
+    private void Pop()
+    {
+        if(popEffect != null)
+        {
+            Instantiate(popEffect, transform.position, Quaternion.identity);
+        }
+        Destroy(gameObject);
     }
 }
