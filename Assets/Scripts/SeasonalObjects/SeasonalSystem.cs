@@ -141,7 +141,7 @@ public class SeasonalSystemGizmoDrawer
     {
         Gizmos.color = Color.yellow;
         float y1 = -6f;
-        float y2 = 20f;
+        float y2 = 70f;
         foreach (float x in new float[]{
             SeasonalSystem.SEASONAL_OFFSET * -1f,
             SeasonalSystem.SEASONAL_OFFSET * 0f,

@@ -30,12 +30,12 @@ public class WhaleMovement : MonoBehaviour
         // Also, screen wrap if too far from the camera
         float fourSeasons = 4 * SeasonalSystem.SEASONAL_OFFSET;
         float dx = posX - mCameraObj.transform.position.x;
-        while (dx > fourSeasons)
+        while (dx > 2.5f * SeasonalSystem.SEASONAL_OFFSET)
         {
             dx -= fourSeasons;
             posX -= fourSeasons;
         }
-        while (dx < -fourSeasons)
+        while (dx < -2.5f * SeasonalSystem.SEASONAL_OFFSET)
         {
             dx += fourSeasons;
             posX += fourSeasons;
