@@ -292,7 +292,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.20000029}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -303,7 +303,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 12}
+  m_Size: {x: 1, y: 12.400001}
   m_EdgeRadius: 0
 --- !u!114 &8009566923203508359
 MonoBehaviour:
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 25}
-  riseSpeed: 2
+  riseSpeed: 2.5
 --- !u!1001 &6984696808849167372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,6 +326,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8009566922827804294}
     m_Modifications:
+    - target: {fileID: 3535863492943658454, guid: 964427dc5bd27db4f896dd03f9f9d26f,
+        type: 3}
+      propertyPath: m_Name
+      value: SmokeEmitter
+      objectReference: {fileID: 0}
     - target: {fileID: 3535863492943658453, guid: 964427dc5bd27db4f896dd03f9f9d26f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -381,15 +386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3535863492943658454, guid: 964427dc5bd27db4f896dd03f9f9d26f,
-        type: 3}
-      propertyPath: m_Name
-      value: SmokeEmitter
-      objectReference: {fileID: 0}
     - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 6
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
         type: 3}
@@ -405,6 +405,31 @@ PrefabInstance:
         type: 3}
       propertyPath: VelocityModule.speedModifier.minScalar
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
+        type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535863492943658451, guid: 964427dc5bd27db4f896dd03f9f9d26f,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 964427dc5bd27db4f896dd03f9f9d26f, type: 3}
