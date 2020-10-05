@@ -28,6 +28,11 @@ public class Panda : MonoBehaviour
             GetComponent<Animator>().SetBool("sleeping", true);
             mSleeping = true;
         }
+        else if(season == Season.FALL)
+        {
+            mEating = true;
+            GetComponent<Animator>().SetBool("eating", mEating);
+        }
     }
 
     void FixedUpdate()
@@ -57,6 +62,23 @@ public class Panda : MonoBehaviour
                     GetComponent<Animator>().SetBool("eating", mEating);
                     Destroy(mTargetFruit);
                     mTargetFruit = null;
+
+                    // sync all pandas with this one
+                    SeasonalSystem seasonalSystem = SeasonalSystem.GetSingleton();
+                    Seasonal seasonal = GetComponent<Seasonal>();
+                    Season season = seasonal.Season;
+                    List<Seasonal> pandas = seasonalSystem.GetSeasonalVariants(seasonal);
+                    float relativeX = transform.position.x - seasonalSystem.GetSeasonX1(season);
+                    for(int i = 0; i < 4; ++i)
+                    {
+                        if(i == (int)season) continue;
+
+                        Season s = (Season)i;
+                        float seasonX = seasonalSystem.GetSeasonX1(s);
+                        Transform panda = pandas[i].transform;
+                        panda.position = new Vector3(seasonX + relativeX, transform.position.y, transform.position.z);
+                    }
+                    
                 }
                 else
                 {
@@ -64,7 +86,7 @@ public class Panda : MonoBehaviour
                 }
             }
             
-            if(!mEating || mTargetFruit)
+            if(mTargetFruit && !mEating)
             {
                 // Accelerate to desired velocity
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();

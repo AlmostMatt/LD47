@@ -19,14 +19,12 @@ public class FruitSpawner : MonoBehaviour
         SpawnFruit();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void SpawnFruit()
     {
-        mSpawnedFruit = Instantiate(fruit, transform);
+        if(mSpawnedFruit == null)
+        {
+            mSpawnedFruit = Instantiate(fruit, transform);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

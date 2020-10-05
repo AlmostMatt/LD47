@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private float mSpeed = 5;
     private float mClimbSpeed = 3;
     private bool mClimbing = false;
+    private bool mStayClimbing = false;
     private float mOldGravityScale;
     private float mJumpedFromClimbTimer = 0f;
     private const float JUMP_GRACE_TIME = 0.15f;
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         float horiz = Input.GetAxis("Horizontal");
         bool sideBlocked = false;
-        if(horiz != 0f)
+        if(horiz != 0f && !mStayClimbing)
         {
             float direction = Mathf.Sign(horiz);
             vel.x = (direction * mSpeed);
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
                     if(initiateClimbing)
                     {
                         mClimbing = true;
+                        mStayClimbing = true;
                         gameObject.layer = PHYS_LAYER_CLIMBING;
                         mRigidbody.gravityScale = 0;
                     }
@@ -158,6 +160,14 @@ public class Player : MonoBehaviour
     {
         if(mJumpedFromClimbTimer > 0f)
             mJumpedFromClimbTimer -= Time.deltaTime;
+        
+        // allow the player to keep holding a direction as they approach a climbable.
+        // only register an attempt to leave the climbable if the player releases and then re-presses
+        if(mStayClimbing && (Input.GetAxis("Horizontal") == 0f || !mClimbing))
+        {
+            mStayClimbing = false;
+        }
+        
         // Update animator or sprite renderer
         Animator anim = GetComponentInChildren<Animator>();
         float stopThreshold = 0.1f;
@@ -168,6 +178,7 @@ public class Player : MonoBehaviour
         {
             SetFacingDirection(-1);
         }
+        
         anim.SetFloat("Speed", Mathf.Abs(mRigidbody.velocity.x));
         anim.SetBool("Jumping", mJumping);
         anim.SetBool("Climbing", mClimbing);
