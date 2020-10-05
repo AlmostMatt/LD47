@@ -19,11 +19,11 @@ public class CloudSpawner : MonoBehaviour
         // Set the emission frequency based on the altitude
         // Note that this is attached to the camera
         float minIntensity = 0.2f;
-        float maxIntensity = 2f;
+        float maxIntensity = 1f;
         // 0 clouds while player is below minCloudHeight
         // minIntensity clouds at minCloudHeight
         // 1 intensity clouds at maxCloudHeight
-        float minCloudHeight = 5f;
+        float minCloudHeight = 8f;
         float maxCloudHeight = CloudLayer.CLOUD_HEIGHT; // the height at which intensity is maxed
         float intensity = 0f;
         if (transform.position.y > minCloudHeight)
