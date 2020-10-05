@@ -1158,16 +1158,6 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 1150282075}
-    - target: {fileID: 8206007130038018149, guid: e96d7167854cc494d89cd367026ebb48,
-        type: 3}
-      propertyPath: cameraZoomOutTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8206007130038018149, guid: e96d7167854cc494d89cd367026ebb48,
-        type: 3}
-      propertyPath: whaleSpawnDelay
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e96d7167854cc494d89cd367026ebb48, type: 3}
 --- !u!1 &1434067750 stripped

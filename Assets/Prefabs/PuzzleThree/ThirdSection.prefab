@@ -1736,7 +1736,7 @@ PrefabInstance:
     - target: {fileID: 3169959774333963569, guid: 3a3282a933ca9d54f88b02124b8cb88e,
         type: 3}
       propertyPath: cameraZoomOutTime
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3169959774333963569, guid: 3a3282a933ca9d54f88b02124b8cb88e,
         type: 3}
@@ -1746,7 +1746,7 @@ PrefabInstance:
     - target: {fileID: 3169959774333963569, guid: 3a3282a933ca9d54f88b02124b8cb88e,
         type: 3}
       propertyPath: whaleRideTime
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3169959774333963569, guid: 3a3282a933ca9d54f88b02124b8cb88e,
         type: 3}
