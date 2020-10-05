@@ -209,8 +209,8 @@ public class Player : MonoBehaviour
         
         anim.SetFloat("Speed", Mathf.Abs(mRigidbody.velocity.x));
         // TODO: if climbing, jumping, falling, etc can have multiple true, set the one that is most relevant to animation
-        anim.SetBool("Climbing", mClimbing);
-        anim.SetBool("Jumping", mJumping);
+        anim.SetBool("Climbing", mClimbing && !mHoldingBalloon);
+        anim.SetBool("Jumping", mJumping && !mHoldingBalloon);
         anim.SetBool("Falling", !mOnGround && !mJumping && !mClimbing && !mHoldingBalloon);
 
         // This is relevant to whether climbing animation should play or be paused.
