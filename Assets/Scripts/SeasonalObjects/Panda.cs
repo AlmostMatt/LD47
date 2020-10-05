@@ -6,7 +6,7 @@ public class Panda : MonoBehaviour
 {
     public Sprite sleepingSprite;
     public GameObject bubble;
-    public float bubbleTime = 2f;
+    public float bubbleTime = 1.5f; // time between bubbles
 
     private Transform mBubbleSpawnPoint;
     private int mFacing = -1;

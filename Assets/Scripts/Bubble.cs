@@ -11,6 +11,7 @@ public class Bubble : MonoBehaviour
     private const int PHYS_LAYER_BUBBLE_POP = 16;
     private float mExpandTimer;
     private float mSquashFactor = 1f;
+    private const float TIME_UNTIL_POP = 1.3f;
     Rigidbody2D mRigidbody;
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,7 @@ public class Bubble : MonoBehaviour
         float wobbleAmount = 30f;
         transform.GetChild(0).localEulerAngles = new Vector3(0f,0f, wobbleAmount * Mathf.Sin(wobbleSpeed * Time.time));
         // Visual effect of popping soon
-        float popAnimationDuration = 1f;
+        float popAnimationDuration = TIME_UNTIL_POP * 0.5f;
         if (mPopTimer > 0f && mPopTimer < popAnimationDuration)
         {
             float popTimerFraction = mPopTimer / popAnimationDuration;
@@ -78,7 +79,7 @@ public class Bubble : MonoBehaviour
         {
             if(mPopTimer < 0f)
             {
-                mPopTimer = 1f;
+                mPopTimer = TIME_UNTIL_POP;
             }
             return;
         }
