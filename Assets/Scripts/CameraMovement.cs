@@ -11,12 +11,16 @@ public class CameraMovement : MonoBehaviour
     private const float MIN_Y = -1.2f;
     private Vector3 mCamVelocity = Vector3.zero;
 
+    private bool mFollowPlayer = true;
+
     void Update()
     {
     }
 
     void FixedUpdate()
     {
+        if(!mFollowPlayer) return;
+
         MoveCamera();
     }
 
@@ -37,5 +41,10 @@ public class CameraMovement : MonoBehaviour
             //transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref mCamVelocity, SMOOTH_TIME);
             // transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * MOV_SPEED);
         }
+    }
+
+    public void StopFollowingPlayer()
+    {
+        mFollowPlayer = false;
     }
 }

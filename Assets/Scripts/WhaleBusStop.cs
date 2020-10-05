@@ -10,12 +10,17 @@ public class WhaleBusStop : MonoBehaviour
     public float newCameraSize = 6f;
     public float cameraZoomOutTime = 2f;
     public float whaleSpawnDelay = 1f;
+    public float whaleRideTime = 10f;
+    public Vector2 blowForce = new Vector2(0, 100);
+
+    private GameObject mWhale;
 
     private int mSummoningWhale = 0;
     private float mStageTime = 0f;
     private float mStageTimer = 0f;
 
     private float mCameraInitialSize;
+    private GameObject mPlayer;
 
     private void Start()
     {
@@ -57,12 +62,45 @@ public class WhaleBusStop : MonoBehaviour
                 }
             case 3:
                 {
-                    Instantiate(whale, whaleSpawnPoint.transform.position, whaleSpawnPoint.transform.rotation);
+                    mWhale = Instantiate(whale, whaleSpawnPoint.transform.position, whaleSpawnPoint.transform.rotation);
                     ParticleSystem[] pss = whaleSpawnPoint.GetComponentsInChildren<ParticleSystem>();
                     foreach(ParticleSystem ps in pss)
                     {
                         ps.Play();
                     }
+                    if(stageDone)
+                    {
+                        mStageTime = 100f;
+                    }
+                    break;
+                }
+            case 4:
+                {
+                    if(mWhale.transform.childCount > 3)
+                    {
+                        stageDone = true;
+                        mStageTime = whaleRideTime;
+                    }
+                    break;
+                }
+            case 5:
+                {
+                    if(stageDone)
+                    {
+                        mStageTime = 0f;
+                    }
+                    break;
+                }
+            case 6:
+                {
+                    ParticleSystem ps = mWhale.GetComponentInChildren<ParticleSystem>();
+                    ps.Play();
+                    mPlayer.transform.SetParent(null);
+                    mPlayer.GetComponent<Rigidbody2D>().simulated = true;
+                    mPlayer.GetComponent<Rigidbody2D>().AddForce(blowForce);
+                    mPlayer.GetComponent<Player>().PreventMovement(false);
+                    mPlayer.transform.localEulerAngles = Vector3.zero;
+                    mSummoningWhale = -1;
                     break;
                 }
         }
@@ -80,6 +118,7 @@ public class WhaleBusStop : MonoBehaviour
 
         if(collision.CompareTag("Player"))
         {
+            mPlayer = collision.gameObject;
             collision.gameObject.GetComponent<Player>().PreventMovement(true);
             mCameraInitialSize = playerCam.GetComponent<Camera>().orthographicSize;
             mSummoningWhale = 1;
