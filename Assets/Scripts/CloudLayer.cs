@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CloudLayer : MonoBehaviour
 {
-    public static float CLOUD_HEIGHT = 60f;
+    public static float CLOUD_HEIGHT = 65f;
     public void Start()
     {
         CLOUD_HEIGHT = transform.position.y;
