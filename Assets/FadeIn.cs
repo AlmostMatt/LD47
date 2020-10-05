@@ -49,7 +49,7 @@ public class FadeIn : MonoBehaviour
         // BallonMovement has a VEL of around 3
         // and camera has a half-height of around 3
         // after that the whale flies by
-        mFadeOutDelay = 5f;
+        mFadeOutDelay = 8f;
         mFadeOutTimer = FADE_OUT_TIME;
     }
 }
