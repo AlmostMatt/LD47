@@ -17,18 +17,21 @@ public class Player : MonoBehaviour
     private bool mClimbing = false;
     private float mOldGravityScale;
     private float mJumpedFromClimbTimer = 0f;
-
+    private const float JUMP_GRACE_TIME = 0.15f;
     private const float GROUND_CHECK_DIST = 0.015f;
-    private const int PLATFORM_PHYS_LAYER = 8;
-    private const int CLIMB_PHYS_LAYER = 9;
+
+    // phys layers
+    // Note, this could also be done with LayerMask.GetMask("UserLayerA", "UserLayerB")) using the names of layers
+    private const int PHYS_LAYER_DEFAULT = 0;
+    private const int PHYS_LAYER_PLATFORM = 8;
+    private const int PHYS_LAYER_CLIMBABLE = 9;
     private const int PHYS_LAYER_CLIMBING = 10;
     // 11 = AnimalNoCollide
     // 12 = FallingFruit
     private const int RAIN_BLOCKING_PLATFORM_PHYS_LAYER = 13;
     // 14 = Rain particles
-    //
-    private const int PHYS_LAYER_DEFAULT = 0;
-    private const float JUMP_GRACE_TIME = 0.15f;
+    private const int PHYS_LAYER_BLOCKING_ENV = 15;
+    private const int GROUND_LAYER_MASK = 1 << PHYS_LAYER_PLATFORM | 1 << RAIN_BLOCKING_PLATFORM_PHYS_LAYER;
 
     // Start is called before the first frame update
     void Start()
@@ -46,32 +49,28 @@ public class Player : MonoBehaviour
         bool sideBlocked = false;
         if(horiz != 0f)
         {
-            vel.x = (Mathf.Sign(horiz) * mSpeed);
-            /**
-              Matt: I commented this out because top-only platformeffectors were messing with the raycast
-              something could probably also be done by changing which layers the raycast hits
-
-            Note: this should also use RAIN_BLOCKING_PLATFORM_PHYS_LAYER
-                RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PLATFORM_PHYS_LAYER);
-                foreach(RaycastHit2D hit in sideHits)
+            float direction = Mathf.Sign(horiz);
+            vel.x = (direction * mSpeed);
+            RaycastHit2D[] sideHits = Physics2D.BoxCastAll(transform.position + new Vector3(direction * 0.95f * collider.bounds.extents.x, 0, 0), collider.bounds.size, 0, vel, GROUND_CHECK_DIST, 1 << PHYS_LAYER_BLOCKING_ENV);
+            foreach(RaycastHit2D hit in sideHits)
+            {
+                if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
                 {
-                    if(hit.collider != null && hit.normal.x != 0f && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
-                    {
-                        sideBlocked = true;
-                        break;
-                    }
+                    sideBlocked = true;
+                    break;
                 }
-                if(sideBlocked)
-                {
-                    Debug.Log("side blocked");
-                    vel.x = 0;
-                }
-            **/
+            }
+            
+            if(sideBlocked)
+            {
+                Debug.Log("side blocked");
+                vel.x = 0;
+            }
         }
 
         float vert = Input.GetAxis("Vertical");        
         {
-            Collider2D climbable = Physics2D.OverlapBox(transform.position, collider.bounds.size, 0, 1 << CLIMB_PHYS_LAYER);
+            Collider2D climbable = Physics2D.OverlapBox(transform.position, collider.bounds.size, 0, 1 << PHYS_LAYER_CLIMBABLE);
             if(climbable != null)
             {
                 Vector3 zAlignedPos = new Vector3(transform.position.x, transform.position.y, climbable.bounds.center.z);
@@ -103,9 +102,7 @@ public class Player : MonoBehaviour
         bool onGround = false;
         if (!mJumping) // Don't even bother with an on-ground check if the player is moving up a because they jumped
         {
-            // Note, this could also be done with LayerMask.GetMask("UserLayerA", "UserLayerB")) using the names of layers
-            int groundLayerMask = (1 << RAIN_BLOCKING_PLATFORM_PHYS_LAYER) | (1 << PLATFORM_PHYS_LAYER);
-            RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, groundLayerMask);
+            RaycastHit2D[] groundHits = Physics2D.BoxCastAll(transform.position, collider.bounds.size, 0, new Vector2(0, -1), GROUND_CHECK_DIST, GROUND_LAYER_MASK);
             foreach (RaycastHit2D hit in groundHits)
             {
                 if (hit.collider != null && hit.normal.y > 0 && hit.distance <= GROUND_CHECK_DIST && hit.collider != collider)
