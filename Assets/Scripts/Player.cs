@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D mRigidbody;
     public float jumpSpeed = 5f;
-    
+
+    private int mFacing = 1; // 1 or -1
     private bool mOnGround = true;
     private bool mJumping = true;
     private float mJumpTimer = 0f;
@@ -160,5 +161,25 @@ public class Player : MonoBehaviour
     {
         if(mJumpedFromClimbTimer > 0f)
             mJumpedFromClimbTimer -= Time.deltaTime;
+        // Update animator or sprite renderer
+        Animator anim = GetComponentInChildren<Animator>();
+        float stopThreshold = 0.1f;
+        if (mRigidbody.velocity.x > stopThreshold)
+        {
+            SetFacingDirection(1);
+        } else if (mRigidbody.velocity.x < -stopThreshold)
+        {
+            SetFacingDirection(-1);
+        }
+        anim.SetFloat("Speed", Mathf.Abs(mRigidbody.velocity.x));
+        anim.SetBool("Jumping", mJumping);
+        anim.SetBool("Climbing", mClimbing);
+        anim.SetBool("Falling", !mOnGround && !mJumping && !mClimbing);
+    }
+
+    private void SetFacingDirection(int facingDirection)
+    {
+        mFacing = facingDirection;
+        transform.localScale = new Vector3(mFacing * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 }
